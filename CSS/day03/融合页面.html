@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0px;
+            margin: 0px;
+        }
+
+        a:link,
+        a:visited {
+            color: gray;
+            /* text-decoration: underline; */
+            cursor: auto;
+        }
+
+        a:link:active,
+        a:visited:active {
+            color: white;
+        }
+
+        .conteiner {
+            margin: 0px 15%;
+        }
+
+        .header,
+        .footer {
+            height: 60px;
+            text-align: center;
+            line-height: 60px;
+            background-color: darkgray;
+        }
+
+        .header a {
+            height: 60px;
+            display: inline-block;
+            text-decoration: none;
+            padding: 0 10px;
+        }
+
+        .column {
+            float: left;
+        }
+
+        .content {
+            float: right;
+        }
+
+        .main .column {
+            width: 25%;
+        }
+
+        .main .content {
+            width: 75%;
+        }
+
+        .main .column a {
+            display: block;
+            padding: 5%;
+        }
+
+        a:hover {
+            background-color: pink;
+
+        }
+
+
+        .clearfix::before,
+        .clearfix::after {
+            content: '';
+            display: block;
+        }
+
+        .clearfix::after {
+            clear: both;
+        }
+
+
+        .position {
+            position: fixed;
+        }
+
+        .main {
+            position: relative;
+        }
+
+        .column {
+            position: absolute;
+            /* top: 50%;
+            transform: translateY(-50%); */
+        }
+    </style>
+</head>
+
+<body>
+    <div style="background-color: aqua;float: right;width: 60px;">
+        <ul class="position">待完成:
+            <li><del>本区域position定位</del></li>
+            <li>header完成a标签3种链接方式</li>
+            <li>footer前插入图片</li>
+            <li>导航条样式</li>
+        </ul>
+    </div>
+    <div class="conteiner">
+        <div class="header">
+            <a href="">本页</a>
+            <a href="">行内块</a>
+            <a href="">Bing</a>
+        </div>
+        <div class="main clearfix">
+            <ul class="column">
+                <a href="#chapter1">column1</a>
+                <a href="#chapter2">column2</a>
+                <a href="#chapter3">column3</a>
+                <a href="#chapter4">column4</a>
+                <a href="#chapter5">column5</a>
+            </ul>
+            <div class="content">
+                <div id="chapter1">
+                    <h2>第1章</h2>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam nam cumque harum vitae praesentium
+                        porro quidem et eveniet eaque aperiam, maxime aspernatur repudiandae aut odio saepe, esse
+                        excepturi consequuntur ipsum!</p>
+                </div>
+                <div id="chapter2">
+                    <h2>第2章</h2>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam nam cumque harum vitae praesentium
+                        porro quidem et eveniet eaque aperiam, maxime aspernatur repudiandae aut odio saepe, esse
+                        excepturi consequuntur ipsum!</p>
+                </div>
+                <div id="chapter3">
+                    <h2>第3章</h2>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam nam cumque harum vitae praesentium
+                        porro quidem et eveniet eaque aperiam, maxime aspernatur repudiandae aut odio saepe, esse
+                        excepturi consequuntur ipsum!</p>
+                </div>
+                <div id="chapter4">
+                    <h2>第4章</h2>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam nam cumque harum vitae praesentium
+                        porro quidem et eveniet eaque aperiam, maxime aspernatur repudiandae aut odio saepe, esse
+                        excepturi consequuntur ipsum!</p>
+                </div>
+                <div id="chapter5">
+                    <h2>第5章</h2>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam nam cumque harum vitae praesentium
+                        porro quidem et eveniet eaque aperiam, maxime aspernatur repudiandae aut odio saepe, esse
+                        excepturi consequuntur ipsum!</p>
+                </div>
+            </div>
+        </div>
+        <div class="footer">
+            <a href="#top">Top</a>
+        </div>
+    </div>
+</body>
+
+</html>

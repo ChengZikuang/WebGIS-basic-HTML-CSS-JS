@@ -1,0 +1,32 @@
+body{
+    margin:0px;
+    padding:0px;
+}
+
+main{
+    /* border: 1px solid gray; */
+    width:794px;
+    height:1123px;
+}
+
+.profile{
+    /* border: 1px solid gray; */
+    margin:30px 20px;
+    padding: 10px;
+    width: 200px;
+    height:auto;
+    float: left;
+}
+
+.info{
+    width: 400px;
+    height: auto;
+    margin: 30px;
+
+    /* border: 1px solid gray; */
+    float: left;
+}
+
+/* .tech{
+    h1:hover{color: red;}
+} */

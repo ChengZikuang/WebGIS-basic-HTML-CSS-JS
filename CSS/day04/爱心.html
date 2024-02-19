@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            padding: 15% 15%;
+        }
+        .box{
+            position: relative;
+            width: 100px;
+            height: 100px;
+            background-color: red;
+    
+            /* margin: 200px; */
+            /* transform: rotate(45deg); */
+
+            animation: scale 1s infinite;
+        }
+
+        .box::before{
+            position: absolute;
+            top: -50px;
+            content: '';
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            border-radius: 50%;
+        }
+        .box::after{
+            position: absolute;
+            left: -50px;
+            content: '';
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            border-radius: 50%;
+        }
+
+        @keyframes scale {
+            0%{
+                transform: rotate(45deg) scale(100%,100%);
+            }
+            50%{
+                transform: rotate(45deg) scale(130%,130%);
+            }
+            100%{
+                transform: rotate(45deg) scale(100%,100%);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+</body>
+</html>

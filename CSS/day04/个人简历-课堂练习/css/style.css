@@ -1,0 +1,161 @@
+/* 声明全局属性 */
+:root {
+  --blue: #2980b9;
+  --black: #333;
+  --white: #fff;
+  --light-color: #777;
+  --light-bg: #eee;
+  --box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* 设置页面元素的默认样式 */
+* {
+  font-family: "Microsoft YaHei", sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: none;
+  border: none;
+  text-decoration: none;
+  text-transform: capitalize;
+  /* transition: all 0.2s linear; */
+}
+
+/* 设置滚动条整体部分样式 */
+/* html::-webkit-scrollbar {
+  width: 10px;
+} */
+
+/* 设置滚动条的轨道样式 */
+/* html::-webkit-scrollbar-track {
+  background: var(--white);
+} */
+
+/* 设置滚动条里面的上下移动小方块的样式 */
+/* html::-webkit-scrollbar-thumb {
+  background: var(--light-color);
+  border-radius: 50px;
+} */
+
+.container {
+  background: linear-gradient(45deg, deeppink, var(--blue));
+  display: flex;
+  padding: 100px 10%;
+}
+
+.left {
+  flex: 30%;
+  align-self: flex-start;
+  text-align: center;
+  background-color: var(--white);
+  border-right: 1px solid var(--black);
+}
+
+.right {
+  flex: 70%;
+  background-color: var(--white);
+}
+
+
+/* left */
+.left img {
+  width: 150px;
+  height: 150px;
+  padding: 10px;
+  border-radius: 50%;
+}
+
+.left h3 {
+  padding: 10px;
+}
+
+.left p {
+  color: var(--blue);
+  margin: 10px 0;
+}
+
+.left .contact_icon a {
+  margin: 30px 0;
+  font-size: 25px;
+  color: var(--black);
+  padding: 5px 15px;
+  border-radius: 50%;
+
+}
+
+.left .contact_icon a:hover {
+  color: var(--white);
+  background-color: var(--blue);
+  box-shadow: var(--box-shadow);
+}
+
+.left .btn {
+  display: inline-block;
+  margin: 10px 0px;
+  padding: 10px 20px;
+  color: var(--white);
+  background-color: var(--blue);
+  border-radius: 10%;
+  box-shadow: var(--box-shadow);
+}
+
+.left .btn:hover {
+  background-color: var(--black);
+}
+
+
+/* right */
+.right h2 {
+  color: var(--blue);
+  padding: 15px 15px;
+  margin-bottom: 10px;
+}
+.right .box_ctn h4{
+  display: flex;
+  justify-content: space-between;
+}
+
+.right .info p {
+  padding: 0 10px;
+  margin-bottom: 10px;
+}
+
+.right .box_ctn {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 5%;
+}
+.right .box_ctn div{
+  flex:50%;
+}
+
+.right .box_ctn span {
+  color: var(--light-color);
+}
+
+.tech img {
+  width: 75px;
+  height: 75px;
+}
+
+.tech .box_ctn {
+  justify-content: space-around;
+  text-align: center;
+}
+
+/* skill */
+
+/* .skill .box_ctn .outer{
+  height: 10px;
+  background-color: var(--light-color);
+  border-radius: 15px;
+} */
+.skill .box_ctn .liner{
+  height: 10px;
+  background-color: var(--blue);
+  border-radius: 15px;
+}
+
+#info{
+  
+}

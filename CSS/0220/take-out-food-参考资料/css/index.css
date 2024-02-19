@@ -1,0 +1,509 @@
+/* 样式表中通过:root伪类抽取了常用的公共样式 通过var()使用 
+:root 选择器是一个伪类，表示文档根元素，所有主流浏览器均支持 ，除了 IE8 及更早的版本。
+在:root中声明相当于全局属性，只要当前页面引用了:root所在文件，都可以使用var()来引用。
+*/
+/* 公共样式 */
+
+:root {
+  /* 颜色相关样式 */
+  /* 本项目中的颜色模式采用hsl 可以理解为和RGB类似 3个参数分别表示色相 饱和度 和明度 一般由设计师决定 */
+  --sonic-silver: hsl(0, 0%, 47%);
+  --marigold: hsl(39, 96%, 48%);
+  --white: hsl(0, 0%, 100%);
+  --jet: hsl(0, 0%, 21%);
+  --light-gray: hsl(0, 0%, 83%);
+  --davys-gray: hsl(0, 0%, 30%);
+  /* 字体相关样式 */
+  --ff-wryh: "微软雅黑", sans-serif;
+  --fs-1: 7rem;
+  --fs-2: 4.2rem;
+  --fs-3: 3.8rem;
+  --fs-4: 3.6rem;
+  --fs-5: 3.4rem;
+  --fs-6: 3.2rem;
+  --fs-7: 3rem;
+  --fs-8: 2.4rem;
+  --fs-9: 2rem;
+  --fs-10: 1.8rem;
+  --fs-11: 1.4rem;
+  --fs-12: 1.2rem;
+  /* 间距 */
+  --section-padding: 100px;
+  /* 圆角 */
+  --radius-circle: 50%;
+  --radius-20: 20px;
+  --radius-15: 15px;
+  --radius-10: 10px;
+  /* 阴影 */
+  --shadow-1: 0 0 30px 4px hsla(0, 0%, 0%, 0.05);
+  --shadow-2: -1px 15px 26px -4px hsla(0, 5%, 61%, 0.15);
+  /* 过渡动画 */
+  --transition-1: 0.25s ease;
+  --transition-2: 0.5s ease;
+}
+/* 默认样式修改 */
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+li {
+  list-style: none;
+}
+/* 常见行内元素改为块级元素 */
+a,
+img,
+span,
+input,
+button {
+  display: block;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
+img {
+  height: auto;
+}
+button{
+  background: none;
+  border: none;
+}
+.w{
+  width: 90%;
+  margin: 0 auto;
+}
+.w-100{
+  width: 100%;
+}
+.relative{
+  position: relative;
+}
+.absolute{
+  position: absolute;
+}
+/* 复用样式 */
+html{
+    font-family: var(--ff-wryh);
+    /* 作为rem的基准值 */
+    font-size: 10px;
+    scroll-behavior: smooth;
+}
+body{
+    background-color: var(--white);
+    font-size: 1.6rem;
+    line-height: 1.6;
+}
+/* 通过2个伪元素实现btn的动画效果 */
+.btn{
+  padding: 13px 25px;
+  background-color: var(--marigold);
+  color:var(--white);
+  border-radius: var(--radius-10);
+  transition: var(--transition-1);
+  overflow: hidden;
+  position: relative;
+  border: 2px solid var(--marigold);
+}
+.btn:hover{
+  color: var(--marigold);
+  border: 2px solid var(--marigold);
+}
+
+/* header css */
+.header{
+  padding-block: 20px;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  width: 100%;
+}
+.header .container{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.header .container .nav-bar{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 409px;
+  height: 50px;
+}
+.header .container .nav-bar-item:hover{
+  color: var(--marigold);
+}
+.header .container .header-btn{
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-left: 227px;
+}
+.header .container .header-btn .cart-btn{
+  padding: 12px;
+  color:var(--marigold);
+  border-radius: var(--radius-10);
+  background-color: var(--white);
+}
+
+/* section 1 css */
+.section1{
+  padding-top: var(--section-padding);
+  background-image: url('../images/hero-bg.png');
+  background-position: center;
+  background-size: cover;
+}
+.section1 .content{
+  display: flex;
+  gap: 30px;
+}
+.section1 .content .container{
+  width: 50%;
+  padding-top: 10%;
+}
+.section1 .content .container h1{
+  font-size: var(--fs-1);
+}
+.section1 .content .container p{
+  margin: 8px 0 40px 0;
+  color: var(--sonic-silver);
+}
+.section1 .content .section1-banner{
+  width: 50%;
+}
+.pos-1{
+  bottom: 30px;
+}
+.pos-2{
+  top: 80px;
+  right: -40px;
+}
+/* section 2 css */
+.section2{
+  padding-top: var(--section-padding);
+}
+.section2 .content{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  justify-content: space-between;
+}
+.section2 .content h1{
+  font-size: var(--fs-2);
+  margin-bottom: 20px;
+}
+.section2 .content p{
+  color: var(--sonic-silver);
+}
+.section2 .container{
+  margin-top: var(--section-padding);
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  width: 100%;
+}
+.section2 .container li{
+  text-align: center;
+  flex:1
+}
+.section2 .container h2{
+  color: var(--marigold);
+}
+/* section 3 css */
+.section3{
+  padding-block: var(--section-padding);
+}
+.section3 .content{
+  display: grid;
+  gap: 40px;
+  grid-template-columns: 1fr 1fr;
+  /* align-items: center; */
+}
+.section3 .content .text-area{
+  padding-top: 60px;
+}
+.section3 .content .text-area h1{
+  font-size: var(--fs-3);
+}
+.section3 .content .text-area p{
+  color: var(--sonic-silver);
+}
+.section3 .content .rest{
+  padding: 10px;
+}
+.section3 .content .rest img{
+  border-radius: var(--radius-20);
+  margin-bottom: 20px;
+}
+.section3 .content .rest h3{
+  margin-bottom: 10px;
+}
+.section3 .content .rest ul{
+  display: flex;
+  margin-bottom: 10px;
+}
+.section3 .content .rest .two-btn{
+  display: flex;
+}
+.section3 .content .rest .two-btn button{
+  padding: 8px 18px;
+  color: var(--marigold);
+  background-color: var(--white);
+  border-radius: var(--radius-10);
+  border: 1px solid var(--marigold);
+  margin-right: 4px;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+.section3 .content .rest .two-btn button:hover{
+  color:var(--white);
+  background-color: var(--marigold);
+}
+.section3>button{
+  margin: 0 auto;
+  margin-top: 40px;
+  background-color: var(--marigold);
+  color: var(--white);
+  padding: 10px 20px;
+  border-radius: var(--radius-10);
+  cursor: pointer;
+}
+/* section4 css */
+.section4{
+  padding-block: var(--section-padding);
+  background-image: url('../images/hero-bg.png');
+  background-position: center;
+  background-size: cover;
+}
+.section4 .content{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 40px;
+}
+.section4 .content .text-area h2{
+  font-size: var(--fs-4);
+}
+.section4 .content .text-area p{
+  width: 80%;
+  color: var(--sonic-silver);
+  margin-bottom: 20px;
+}
+/* section5 css */
+.section5 .content{
+  display: flex;
+  gap: 20px;
+}
+.section5 .content>div{
+  flex:1
+}
+.section5 .content .title{
+  font-weight:bolder;
+  font-size: var(--fs-6);
+  display: flex;
+  align-items: center;
+}
+.section5 .content .item-area{
+  padding: 40px 25px;
+  box-shadow: var(--shadow-1);
+  border-radius: var(--radius-15);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+} 
+.section5 .content .item-area h3{
+  color:var(--marigold);
+  font-size: var(--fs-3);
+  font-weight: 2000;
+}
+.section5 .content .item-area span{
+  color: var(--sonic-silver);
+}
+/* section 6 css */
+.section6{
+  padding-block: var(--section-padding);
+}
+.section6 .content{
+  display: flex;
+  gap: 40px;
+} 
+.section6 .content .text-area{
+  flex:1;
+  padding-top: var(--section-padding);
+}
+.section6 .content .text-area h2{
+  font-size: var(--fs-6);
+  margin-bottom: 20px;
+}
+.section6 .content .text-area p{
+  color: var(--sonic-silver);
+  margin-bottom: 20px;
+}
+.section6 .content .text-area .comments{
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.section6 .content .img{
+  flex:1
+}
+/* section7 css */
+.section7{
+  background-color: var(--jet);
+  padding-block: var(--section-padding);
+}
+.section7 .content h1{
+  text-align: center;
+  color:var(--white);
+  font-size: var(--fs-2);
+  padding-bottom: 40px;
+  letter-spacing: 4px;
+}
+.section7 .content .container{
+  display: flex;
+  align-items: center;
+  gap: 50px;
+}
+.section7 .content .container .item img{
+  border-radius: var(--radius-15);
+  border: 6px solid var(--marigold);
+}
+.section7 .content .container .info{
+  left: 40px;
+  bottom: -20px;
+}
+.section7 .content .container .info h3{
+  color:var(--white);
+  font-size: var(--fs-8);
+  margin-bottom: 10px;
+  padding-left: 20px;
+}
+.section7 .content .container .info button{
+  padding: 20px 40px;
+  color: var(--white);
+  font-size: var(--fs-10);
+  background-color: var(--marigold);
+  border-radius: var(--radius-10);
+  cursor: pointer;
+  transition: all 0.5s;
+}
+.section7 .content .container .info button:hover{
+  color:var(--marigold);
+  background-color: var(--white);
+}
+/* section8 css */
+.section8{
+  padding-block: var(--section-padding);
+}
+.section8 .content{
+  display: flex;
+  gap: 40px;
+} 
+.section8 .content .img{
+  flex:1
+}
+.section8 .content .text-area{
+  flex:1;
+  padding-top: 60px;
+}
+.section8 .content .text-area .text{
+  background-color: var(--white);
+  border-radius: var(--radius-10);
+  padding: 10px;
+  margin-bottom: 10px;
+}
+.section8 .content .text-area .text h2{
+  font-size: var(--fs-4);
+  margin-bottom: 30px;
+} 
+.section8 .content .text-area .text input{
+  box-shadow: var(--shadow-2);
+  width: 100%;
+  border: none;
+  padding: 10px 20px;
+  border-radius: var(--radius-10);
+  outline-color: var(--marigold);
+}
+.section8 .content .text-area button{
+  padding: 15px 40px;
+  background-color: var(--marigold);
+  color:var(--white);
+  border-radius: var(--radius-10);
+  cursor: pointer;
+}
+/* footer css */
+footer{
+  padding-top: var(--section-padding);
+  background-color: var(--jet);
+}
+footer .content{
+  display: flex;
+  gap: 20px;
+  border-bottom: 1px solid var(--davys-gray);
+  padding-bottom: 40px;
+}
+footer .content .footer1{
+  flex:3
+}
+footer .content .footer1 h2{
+  color: var(--white);
+  font-size: var(--fs-4);
+  margin-block: 20px;
+}
+footer .content .footer1 p{
+  color: var(--sonic-silver);
+  color: var(--light-gray);
+  width: 80%;
+}
+footer .content .footer2{
+  flex:2
+}
+footer .content .footer2 h4{
+  color: var(--davys-gray);
+  font-size: var(--fs-8);
+  margin-bottom: 20px;
+}
+footer .content .footer2 a{
+  color:var(--light-gray);
+  margin-bottom: 20px;
+}
+footer .content .footer3{
+  flex:3
+}
+footer .content .footer3 h4{
+  color: var(--davys-gray);
+  font-size: var(--fs-8);
+  margin-bottom: 20px;
+}
+footer .content .footer3 p{
+  color:var(--light-gray);
+  margin-bottom: 20px;
+}
+footer .content .footer3 .p1{
+  border-bottom: 1px solid var(--davys-gray);
+  padding-bottom: 10px;
+}
+footer .content .footer3 p i{
+  margin-right: 10px;
+}
+footer .copyright{
+  text-align: center;
+  padding-block: 20px;
+  color: var(--davys-gray);
+}
+
+
+
+
+
+
+
+
+
+
+
+

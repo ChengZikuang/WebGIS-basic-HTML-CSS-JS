@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+
+    
+
+    <h1>JavaScript 数组</h1>
+
+    <!-- <p>如果在访问数组时使用命名索引，JavaScript 会将数组重新定义为标准对象，并且某些数组方法和属性将产生未定义或不正确的结果。</p> -->
+
+    <p id="demo"></p>
+
+    <!-- <script>
+        var person = [];
+        person["firstName"] = "Bill";
+        person["lastName"] = "Gates";
+        person["age"] = 19;
+        document.getElementById("demo").innerHTML =
+            person[0] + " " + person.length;
+    </script> -->
+
+    <script>
+        var person = {firstName:"Bill", lastName:"Gates", age:19};
+        // var person = {"Bill", "Gates", 19};
+        // var person = ["Bill", "Gates", 62];
+
+        // person["sex"] = "男";
+        
+            
+        document.getElementById("demo").innerHTML = person[0];
+    </script>
+
+
+    <p>JavaScript 不支持命名索引的数组。在 JavaScript 中，数组只能使用数字索引。</p>
+
+
+
+</body>
+
+</html>

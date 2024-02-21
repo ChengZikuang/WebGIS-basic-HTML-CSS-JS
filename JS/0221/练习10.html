@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>1,已知a里面是10,b里面是20,用程序交换2者的值,并打印 </h1>
+    <button onclick="swap(a,b)">打印</button>
+    <p id="id1"></p>
+    <h1>2,模拟一个计算器:求两个数的加减乘除四则运算</h1>
+    <input type="number" id="num1" value="2">
+    <select name="char" id="char">
+        <option value="加">加</option>
+        <option value="减">减</option>
+        <option value="乘">乘</option>
+        <option value="除">除</option>
+    </select>
+    <input type="number" id="num2" value="4">
+    <button onclick="calc()">计算</button>
+    <span>答案：</span><span id="ans2"></span>
+    <h1>3,用户购买商品,三个商品中有一个超过50元,或者总价超过100元,即可以打八五折,否则不打折(自学三元表达式完成)</h1>
+    <button onclick="disc()">提交</button>
+    <p id="ans3"></p>
+    <h1>4,编写中地外卖网静态页面(一个星期时间)</h1>
+    <a href="./takeout.html">跳转至</a>
+</body>
+<script>
+    var price1 = 30.50;
+    var price2 = 30.50;
+    var price3 = 10.50;
+    var total = price1 + price2 + price3;
+    function disc() {
+        var disc = (total > 100.00 | price1 > 50.00 | price2 > 50.00| price3 > 50.00) ? 1 : 0;
+        if(disc == 1){
+            document.getElementById("ans3").innerHTML = "您的商品打八五折，总价为" + total*0.85;
+        }else{
+            document.getElementById("ans3").innerHTML = "您的商品总价为" + total;
+        }
+    }
+
+</script>
+<script>
+    var a = 10, b = 20;
+    // document.getElementById("id1").innerHTML = "a:"+a+" b:"+b;
+    function swap(a, b) {
+        var c = a;
+        a = b;
+        b = c;
+        document.getElementById("id1").innerHTML = "a:" + a + " b:" + b;
+    }
+    // document.getElementById("id1").innerHTML = "a:"+a+" b:"+b;
+</script>
+<script>
+    function calc() {
+        let num1 = document.getElementById("num1").value;
+        let num2 = document.getElementById("num2").value;
+        let char = document.getElementById("char").value
+
+        switch (char) {
+            case "加":
+                document.getElementById("ans2").innerHTML = Number(num1) + Number(num2);
+                break;
+            case "减":
+                document.getElementById("ans2").innerHTML = Number(num1) - Number(num2);
+                break;
+            case "乘":
+                document.getElementById("ans2").innerHTML = Number(num1) * Number(num2);
+                break;
+            case "除":
+                document.getElementById("ans2").innerHTML = Number(num1) / Number(num2);
+                break;
+        }
+    }
+</script>
+
+</html>

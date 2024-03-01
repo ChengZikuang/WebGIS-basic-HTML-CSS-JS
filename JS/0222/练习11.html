@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>练习一:用三种方式判断一个数是奇数还是偶数(3元,if,switch)</h1>
+    <input id="num" type="number">
+    <p id="id1"></p>
+    <button onclick="myFunction1()">方法1</button>
+    <button onclick="myFunction2()">方法2</button>
+    <button onclick="myFunction3()">方法3</button>
+    <h1>练习二:将九九乘法表嵌套到表格中,实现工整对齐 </h1>
+    <p id="id2"></p>
+    <button onclick="myFunction21()">打印</button>
+    <h1>练习三:打印倒三角形</h1>
+    <button onclick="myFunction31()">打印倒三角形</button>
+    <h1>练习三:打印正倒三角形</h1>
+    <button onclick="myFunction32()">打印正倒三角形</button>
+</body>
+<script>
+    function myFunction32() {
+        var line = prompt("打印多少行?");
+        //a= 1,b = 5 ,c = 0=(5-b)/2 打印 *****
+        //a= 2,b = 3 ,c = 1=(5-b)/2 打印 "***"
+        //a= 3,b = 1 ,c = 2=(5-b)/2 打印 ""*"" 
+        // for (let m = 5; m >  0; m -= 2) {
+        //     for (let n = (5 - m) / 2; c > 0; n--) { document.write(" ");}
+        //     for (let n = 1; n <= m; n++) { document.write("*");}
+        //     for (let n = (5 - m) / 2; n > 0; n--) { document.write(" ");}
+        // }
+        //笨办法好像用switch可以实现，但是是真的笨哇
+        line = 2*line-1;
+        for(let m = line ; m > 0 ; m-=2){
+            for (let l = (line-m)/2; l > 0; l--) { document.write("&nbsp");}
+            for (let n = 1; n <= m; n++) { document.write("*");}
+            document.write("</br>");
+            // document.write("*")
+        }
+        // document.write(line);
+    }
+    
+    //练习三
+    function myFunction31() {
+        for (let a = 7; a > 0; a--) {
+            for (let b = 0; b < a; b++) {document.write("*");}
+            document.write("</br>");
+        }
+    }
+
+    //练习二
+    function myFunction21() {
+        for (let i = 1; i < 10; i++) {
+            for (let j = 1; j <= i; j++) {
+                document.write(j + "*" + i + "=" + i * j + " ");
+            }
+            document.write("</br>");
+        }
+    }
+    //练习一
+    function myFunction1() {
+        var mynumber = document.getElementById("num").value;
+        var ans = "";
+        if ((mynumber % 2) == 0) {
+            ans = "偶数"
+        } else {
+            ans = "奇数"
+        }
+        document.getElementById("id1").innerHTML = ans;
+    }
+
+    function myFunction2() {
+        var mynumber = document.getElementById("num").value;
+        var ans = (mynumber % 2) == 0 ? "偶数" : "奇数";
+        document.getElementById("id1").innerHTML = ans;
+    }
+
+    function myFunction3() {
+        var mynumber = document.getElementById("num").value;
+        switch (mynumber % 2) {
+            case 0:
+                ans = "偶数";
+                break;
+            case 1:
+                ans = "奇数"
+                break;
+        }
+        document.getElementById("id1").innerHTML = ans;
+    }
+</script>
+
+
+</html>

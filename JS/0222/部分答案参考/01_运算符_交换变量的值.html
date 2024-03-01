@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* //已知a里面是10,b里面是20,用程序交换2者的值,并打印 */
+
+        var a = 10
+        var b = 20
+
+        //定义第三个变量(首尾转圈法:前一个表达式的右边和后一个表达式的左边相同)
+        var temp = a
+        a = b
+        b = temp
+
+        //打印最终的值
+        console.log(a);
+        console.log(b);
+
+    </script>
+</body>
+</html>

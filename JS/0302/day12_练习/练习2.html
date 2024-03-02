@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>
+
+    </h1>
+    <script>
+
+        function createPoker(){
+            let colour = ["♠","♣","♦","♥"];
+            let card = ["A","2","3","4","5","6","7","8","9","10","J","Q","K"];
+            var index = 0;
+            var element = [];
+
+            for(let i = 0 ; i < colour.length ; i++){
+                for (let j = 0; j < card.length; j++) {
+                    element[index] = colour[i]+card[j];
+                    index++;
+                }
+            }
+            
+            element[index++] = "🃏joker";
+            element[index++] = "🃏joker";
+            return element;
+        }
+        
+        function distributePoker(cards){
+            //打乱排序
+            cards.sort(function(a, b){return 0.5 - Math.random()}); 
+            return cards;
+            //生成底牌数组
+            var last = 
+            //遍历poker，生成3个玩家数组
+                //player[0]-->index%3余0
+            //二维数组存入4组数据
+        }
+        //简单调用函数
+        document.write(distributePoker(createPoker()));
+
+    </script>
+</body>
+</html>

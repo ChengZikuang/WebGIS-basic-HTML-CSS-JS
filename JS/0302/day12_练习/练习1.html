@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>课堂上的:定义一个函数,返回传入数组的最大值和最小值(注意是一次性返回两个结果,提示:可以返回一个数组)</h1>
+    <script>
+        var a = [12,7,8,10,22,11];
+        function maxandmin(){
+            var b = []; 
+            b[0]=a[0];
+            b[1]=a[0];
+            
+            
+            for(let i = 0;i < a.length ; i++ ){
+                if(b[0] > a[i]){
+                    b[0] = a[i];
+                }
+                if(b[1] < a[i]){
+                    b[1] = a[i];
+                }
+            }
+            
+            return b;
+        }
+
+        /**function2
+         * 排序传入数组
+         * Array算法留头留尾成新数组
+        **/
+       function function2(){
+        a.sort(function(a,b){return a-b});
+        a.splice(1,a.length-2);
+        return a
+       }
+       
+        document.write(function2(a));
+        
+    </script>
+</body>
+</html>

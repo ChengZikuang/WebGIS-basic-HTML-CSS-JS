@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p>需求：世界最高山峰是珠穆朗玛峰(8844.43米=8844430毫米)，假如我有一张足够大的纸，它的厚度是0.1毫米。
+        请问，我折叠多少次，可以折成珠穆朗玛峰的高度?</p>
+</body>
+    <script>
+        
+        for (var timez = 0,ceter = 0.1; ;timez++) {
+            ceter = ceter * 2;
+            // document.write(ceter);
+            // document.write("</br>")
+            if(ceter>8844430){break;}
+        }
+        document.write("-------")
+        document.write("共需要对折"+timez+"次，此时纸张厚度为"+ ceter);
+    </script>
+
+</html>

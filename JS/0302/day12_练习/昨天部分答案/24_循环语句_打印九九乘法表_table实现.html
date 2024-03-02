@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    table {
+      border-collapse: collapse
+    }
+
+    td {
+      border: 1px solid black;
+    }
+  </style>
+</head>
+
+<body>
+  <script>
+
+    /* 
+     ☆
+     ☆☆
+     ☆☆☆
+     ☆☆☆☆ 
+     ☆☆☆☆☆
+
+      1x1=1	
+      1x2=2	2x2=4	
+      1x3=3	2x3=6	3x3=9	
+      1x4=4	2x4=8	3x4=12	4x4=16	
+      1x5=5	2x5=10	3x5=15	4x5=20	5x5=25	
+      1x6=6	2x6=12	3x6=18	4x6=24	5x6=30	6x6=36	
+      1x7=7	2x7=14	3x7=21	4x7=28	5x7=35	6x7=42	7x7=49	
+      1x8=8	2x8=16	3x8=24	4x8=32	5x8=40	6x8=48	7x8=56	8x8=64	
+      1x9=9	2x9=18	3x9=27	4x9=36	5x9=45	6x9=54	7x9=63	8x9=72	9x9=81	
+
+
+     分析
+        外层控制行数,内层控制列数
+        一共有9行,外层循环的条件已经确定, i<=9
+
+        内层循环的条件 可以通过分析 每一层打印的星星 和层数i之间的关系得到
+
+           层数(i 从1开始)        每一层打印的星星的个数
+                1                         1
+                2                         2
+                3                         3
+                4                         4
+                i                         i
+
+        最后使用表达式来替换 星星 
+     */
+
+    document.write('<table>')
+    for (var i = 1; i <= 9; i++) {
+      document.write('<tr>')
+
+      for (var j = 1; j <= i; j++) {
+        document.write('<td>');
+        document.write(`${j}x${i}=${i * j} &nbsp;&nbsp;&nbsp;&nbsp;`)
+        document.write('</td>')
+      }
+      document.write('<br>') //打印完一行之后,换行
+      document.write('<tr>')
+    }
+    document.write('</table>')
+  </script>
+</body>
+
+</html>

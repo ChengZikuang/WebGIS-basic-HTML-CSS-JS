@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //定义一个初始化高度
+		var h = 0.1;
+		
+		//1,在循环外面定义一个计数器变量
+		var count = 0;
+		
+		while(h < 8844430){
+			h *= 2;//每一次折叠之后是原来的2倍
+			//2,在循环里面,每折一次就+1
+			count++;
+		}
+		
+		//3,循环结束完之后,输出最终计数器的值
+		console.log(count);
+
+    </script>
+</body>
+</html>

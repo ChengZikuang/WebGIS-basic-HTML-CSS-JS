@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //1,在循环外面定义一个计数器,初始值为0
+		var count = 0;
+
+        var str = ''
+		
+		for(var i=1000;i <= 9999;i++){
+			var ge = i%10;
+			var shi = parseInt(i/10%10);
+			var bai = parseInt(i/100%10);
+			var qian =parseInt(i/1000%10);
+			
+			if(ge+bai == shi+qian){
+				str += (i + '\t');//拼接一个制表符,分隔数据
+
+				//2,在循环里面,如果符合条件,计数器自增
+				count++;
+				
+				//当计算器每次记录5个时候,再换行
+				if(count%5==0){
+					str += '\n';//拼接一个换行
+				}
+			}
+		}
+
+        //打印最终的数字
+        console.log(str);
+		
+		//3,在循环外面,打印最终计数器的值
+		console.log(count);
+    </script>
+</body>
+</html>

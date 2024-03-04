@@ -16,7 +16,7 @@
         a[2] = 2;
         var index = 3;
         while(index < 20){
-            a[index] = Number(a[index-1]) + Number(a[index-2]);
+            a[index] = (+a[index-1]) + (+a[index-2]);
             index++;
         }
         console.log(a[20-1]);

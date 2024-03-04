@@ -1,47 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
     <h1>
 
     </h1>
     <script>
 
-        function createPoker(){
-            let colour = ["♠","♣","♦","♥"];
-            let card = ["A","2","3","4","5","6","7","8","9","10","J","Q","K"];
+        function createPoker() {
+            let colour = ["♠", "♣", "♦", "♥"];
+            let card = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"];
             var index = 0;
             var element = [];
 
-            for(let i = 0 ; i < colour.length ; i++){
+            for (let i = 0; i < colour.length; i++) {
                 for (let j = 0; j < card.length; j++) {
-                    element[index] = colour[i]+card[j];
+                    element[index] = colour[i] + card[j];
                     index++;
                 }
             }
-            
+
             element[index++] = "🃏joker";
             element[index++] = "🃏joker";
+            console.log(element);
+
             return element;
+            // console.log(cards);
         }
-        
-        function distributePoker(cards){
+
+        function distributePoker(cards) {
+            //返回二维数组
+            var newcards = [];
+            for (let index = 0; index < 4; index++) {
+                newcards[index] = new Array();
+            }
+
             //打乱排序
-            cards.sort(function(a, b){return 0.5 - Math.random()}); 
-            return cards;
+            cards.sort(function (a, b) { return 0.5 - Math.random() });
+
             //生成底牌数组
-            var last = 
+            var last = cards.splice(cards.length - 3, 3);
+            newcards[3] = last;
+
             //遍历poker，生成3个玩家数组
-                //player[0]-->index%3余0
-            //二维数组存入4组数据
+            for (let i = 0, j = 0; i < cards.length; i++) {
+                switch (i % 3) {
+                    case 0: {
+                        newcards[j].push(cards[i]);
+                        break;
+                    }
+                    case 1: {
+                        newcards[j + 1].push(cards[i]);
+                        break;
+                    }
+                    case 2: {
+                        newcards[j + 2].push(cards[i]);
+                        break;
+                    }
+                }
+            }
+
+            //forEach?
+
+
+            return newcards;
         }
-        //简单调用函数
-        document.write(distributePoker(createPoker()));
+        //调用函数读取新数组
+        var newcards = distributePoker(createPoker());
+        console.log(newcards);
+        document.write("player1: " + newcards[0] + "</br>");
+        document.write("player2: " + newcards[1] + "</br>");
+        document.write("player3: " + newcards[2] + "</br>");
+        document.write("底牌: " + newcards[3]);
 
     </script>
 </body>
+
 </html>

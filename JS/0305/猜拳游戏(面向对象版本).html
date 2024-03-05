@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <!-- 未判断空值时情况 -->
+    <script>
+        //3个类
+        class GamePlayer{
+            play() {
+                var res = prompt("出拳：(剪刀/石头/布)");
+                return res;
+            }
+        }
+
+        class Judger{
+            judge(resp,resc){
+                if(((resp == "剪刀")&&(resc == "布"))
+                ||((resp == "布")&&(resc == "石头"))
+                ||((resp == "石头")&&(resc == "剪刀"))){
+                    return "player win!"
+                } else if(resc == resp) {
+                    return "平局"
+                }else{
+                    return "computer win!"
+                }
+            }
+        }
+
+        class Computer{
+            play(){
+                var rand = Math.floor(Math.random() * 3 ) + 1;
+                switch (rand) {
+                    case 1:
+                        return "石头"
+                    case 2:
+                        return "剪刀"
+                    case 3:
+                        return "布"
+                }
+            }
+        }
+      
+        //3个对象
+        var player = new GamePlayer;
+        var computer = new Computer;
+        var judge = new Judger;
+                
+        //读取
+        var resp = player.play();
+        var resc = computer.play();
+                
+        //调用裁判方法
+        alert("您：" + resp + " 电脑：" + resc)
+        alert(judge.judge(resp,resc));
+
+    </script>
+</body>
+</html>

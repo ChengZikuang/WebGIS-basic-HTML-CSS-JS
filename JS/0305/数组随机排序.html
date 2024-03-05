@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var arr = [1,2,3,4,5,6,7,8,9,10]
+        console.log(arr)
+
+        for (let i = arr.length-1; i >=0 ; i--) {
+            console.log("I:" + i)
+            let rand = Math.floor(Math.random()* (i));
+                console.log("rand:" + rand)
+                var temp = arr[i];
+                arr[i] = arr[rand];
+                arr[rand] = temp;
+                console.log(arr)
+            }
+            
+        console.log(arr)
+    </script>
+</body>
+</html>

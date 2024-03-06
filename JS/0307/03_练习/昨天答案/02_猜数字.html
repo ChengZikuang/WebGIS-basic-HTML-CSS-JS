@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var ansArray = Array(4);//长度为4的数组
+        for (var i = 0; i < ansArray.length; i++) {
+            ansArray[i] = parseInt(Math.random() * 10);//循环拿到数组的随机数字
+        }
+
+        var correctAns = 0;//正确答案
+        wrongAns = 0;//错误答案
+
+        var guessArray = Array(4);//用户猜的数字
+
+        alert(ansArray);
+
+        //猜十次
+        for (var count = 0; count < 10; count++) {
+            correctAns = 0;
+            wrongAns = 0;
+            //循环输入4次每个位置上对应的数字
+            for (var k = 0; k < guessArray.length; k++) {
+                guessArray[k] = parseInt(prompt("请输入第" + (k + 1) + "个数字"));
+                if (guessArray[k] == ansArray[k]) {
+                    correctAns++;
+                } else if (guessArray[k] != ansArray[k]) {
+                    wrongAns++;
+                }
+            }
+            alert("第" + (count + 1) + "次，你输入的是：" + guessArray + ",正确" + correctAns + ",错误：" + wrongAns);
+            if (correctAns == 4) {
+                alert("猜对了");
+                break;
+            }
+        }
+    </script>
+</body>
+
+</html>

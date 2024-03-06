@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 手机号 12345678901  --> 123****8901  */
+
+        var tel = '12345678901'
+
+        //先获取中间4位
+        var temp = tel.substr(3,4)
+
+        //再替换成****
+        var newTel = tel.replace(temp,'****')
+
+        //打印
+        console.log(newTel);
+    </script>
+</body>
+</html>

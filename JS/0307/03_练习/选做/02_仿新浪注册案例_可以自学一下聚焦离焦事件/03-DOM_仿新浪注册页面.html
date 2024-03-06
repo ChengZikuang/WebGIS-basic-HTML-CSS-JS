@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div {
+            width: 600px;
+            margin: 100px auto;
+        }
+        
+        .message {
+            display: inline-block;
+            font-size: 12px;
+            color: #999;
+            background: url(img/mess.png) no-repeat left center;
+            padding-left: 20px;
+        }
+        
+        .wrong {
+            color: red;
+            background-image: url(img/wrong.png);
+        }
+        
+        .right {
+            color: green;
+            background-image: url(img/right.png);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="register">
+        <input type="password" class="ipt">
+        <p class="message">请输入6~16位密码</p>
+    </div>
+    <script>
+        // 首先判断的事件是表单失去焦点 blur
+        // 如果输入正确则提示正确的信息颜色为绿色小图标变化
+        // 如果输入不是6到16位，则提示错误信息颜色为红色 小图标变化
+        // 因为里面变化样式较多，我们采取className修改样式
+       
+    </script>
+</body>
+
+</html>

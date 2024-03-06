@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+            str.padStart(位数,字符)
+                按位数在str前补字符 str.padEnd(位数,字符)
+                按位数在str后补字符 
+        
+        */
+
+        //获取随机数
+        function random(min,max){
+            return parseInt(Math.random()*(max-min)+min);
+            //Math.random()获取0-1中的随机数
+            //随机数需要取整parseInt()，向下取整 Math.floor()
+        }
+
+        //定义红篮球数组
+        var redBall=[];
+        var blueBull=[];
+
+        //获取6个随机红球
+        for(var i=0;i<6;i++){
+            var redBallNum=random(1,33);
+            //位数补齐
+            redBallNum=redBallNum.toString().padStart(2,"0");
+            //判重添加
+            //如果不存在（false），就添加
+            if(redBall.indexOf(redBallNum)==-1){
+                redBall.push(redBallNum);
+            }else{
+                //反之i--重新循环
+                i--;
+            }
+        }
+        //获篮球
+        var blueBallNum=random(1,16);
+        blueBallNum=blueBallNum.toString().padStart(2,"0");
+        blueBull.push(blueBallNum);
+
+        //合并成字符串
+        var str=redBall.toString()+"|"+blueBull.toString();
+        console.log(str);
+    </script>
+</body>
+</html>

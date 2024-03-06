@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        html,
+        body {
+            padding: 0px;
+            margin: 0px;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .box {
+            position: relative;
+            width: 220px;
+            height: 420px;
+        }
+
+        .top-part {
+            width: 220px;
+            height: 220px;
+            box-sizing: border-box;
+            position: relative;
+        }
+
+        .top-part .left-box {
+            width: 220px;
+            height: 220px;
+            box-sizing: border-box;
+            border-radius: 50%;
+            border: 8px solid #333;
+        }
+
+        .top-part .left-box .leaf {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 50px;
+            height: 100px;
+            margin-left: -25px;
+            border-radius: 50%;
+            background-color: rgb(106, 106, 235);
+            margin-top: -100px;
+        }
+
+        .top-part .left-box .leaf:nth-child(2) {
+            transform: rotate(120deg);
+            transform-origin: 50% 100%;
+        }
+
+        .top-part .left-box .leaf:nth-child(3) {
+            transform: rotate(240deg);
+            transform-origin: 50% 100%;
+        }
+
+        .line-box .line {
+            position: absolute;
+            top: 50%;
+            left: 0px;
+            width: 212px;
+            height: 2px;
+            background-color: #333;
+            z-index: 10;
+        }
+
+        .line-box .line:nth-child(2) {
+            transform: rotate(30deg);
+        }
+
+        .line-box .line:nth-child(3) {
+            transform: rotate(60deg);
+        }
+
+        .line-box .line:nth-child(4) {
+            transform: rotate(90deg);
+        }
+
+        .line-box .line:nth-child(5) {
+            transform: rotate(120deg);
+        }
+
+        .line-box .line:nth-child(6) {
+            transform: rotate(150deg);
+        }
+
+        .line-box .mid-dot {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 50px;
+            height: 50px;
+            margin-left: -25px;
+            margin-top: -25px;
+            background-color: #333;
+            z-index: 11;
+            border-radius: 50%;
+        }
+
+        .bom-part {
+            width: 50px;
+            height: 200px;
+            background-color: #333;
+            position: absolute;
+            top: 215px;
+            left: 50%;
+            margin-left: -25px;
+        }
+
+        .bom-part .item {
+            color: white;
+            width: 22px;
+            height: 22px;
+            background-color: rgb(106, 106, 235);
+            border-radius: 50%;
+            font-size: 13px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0px auto;
+            margin-top: 15px;
+            cursor: pointer;
+        }
+
+        .leaf-ani1 {
+            animation: ani 1s infinite linear;
+        }
+
+        .leaf-ani2 {
+            animation: ani 0.8s infinite linear;
+        }
+
+        .leaf-ani3 {
+            animation: ani 0.5s infinite linear;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <div class="top-part">
+            <div class="line-box">
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="mid-dot"></div>
+            </div>
+            <div class="left-box" id="leaf-id">
+                <div class="leaf"></div>
+                <div class="leaf"></div>
+                <div class="leaf"></div>
+            </div>
+        </div>
+
+        <div class="bom-part">
+            <div class="item" >1</div>
+            <div class="item" >2</div>
+            <div class="item" >3</div>
+            <div class="item">关</div>
+        </div>
+</body>
+
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>双色球由33个红球和16个蓝球组成,1注双色球包括6个不重复的红球和1个蓝球。
+        实现“随机一注”功能，
+        以字符串形式输出“随机一注”结果，选中的红蓝球用"|“隔开，
+        红球在前，号码间用逗号隔开，
+        如"06,10,13,18,23,27|05”</p>
+    <button onclick="randSelect()">随机一注</button>
+    <p id="demo"></p>
+    
+    <script>
+        //红球、蓝球数组
+        var arrRed = [];
+        var arrBlue = [];
+        //想法：用循环生成数组
+        function createBall(){
+            for (let index = 1; index <= 33; index++) {
+                arrRed.push(index);
+                while(index <= 16){
+                    arrBlue.push(index);
+                    break;
+                }        
+            }
+        }
+        function cleanBall(){
+            arrRed = [];
+            arrBlue = [];
+        }
+        /*问题：数值为1而非01*/
+       
+        //红球随机方法返回字符串 = 33个数组中随机选择一个后，在剩下的数组中再进行随机选择，共进行6次。
+        //方法1
+        // function randRed(arr) {            
+        //     var newarr = [];
+        //     //获取6个字符数组
+        //     while (newarr.length < 6) {                        
+        //         let randindex = Math.floor(Math.random() * arr.length);                
+        //         newarr.push(arr[randindex]);
+        //         //剔除选择元素
+        //         arr.splice(randindex,1);
+        //     }
+        //     return newarr;
+        // }
+
+        /*想法2：33个数组随机选择，检查数据数据是否重复，不重复输出，重复再调随机方法*/
+        function randRed(arr) {            
+            var newarr = [];
+            //获取6个字符数组
+            while (newarr.length < 6) {                        
+                let randindex = Math.floor(Math.random() * arr.length);
+                newarr.push(arr[randindex]);
+                //剔除选择元素
+                if(isDupl(newarr)){
+                    newarr.pop();
+                }
+            }
+            return newarr;
+        }
+
+        function isDupl(array){
+            let len = array.length;
+            for(let i = 0; i < len; i++){
+                var temp = array[i];
+                for (let j = i+1; j < len; j++) {
+                    if(temp == array[j]){
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
+        //蓝球随机方法返回字符串 = 16个数组随机选取一个
+        function randbule(arr) {
+            //Math.floor(Math.random() * (max - min + 1) ) + min;
+            let randindex = Math.floor(Math.random() * 16);
+            return arr[randindex];
+        }
+
+        function randSelect(){
+            //生成球数组
+            createBall();
+            //调用红球随机方法
+            var red = randRed(arrRed);
+            //美化下红球输出
+            red.sort(function(a,b){return a-b});
+            //调用蓝球随机方法
+            var blue = randbule(arrBlue);
+            //拼接为最终结果
+            var demostring = red + "|" + blue;
+            document.getElementById("demo").innerHTML = demostring ;
+
+            //清空原始数组
+            cleanBall();
+        }
+    </script>
+</body>
+</html>

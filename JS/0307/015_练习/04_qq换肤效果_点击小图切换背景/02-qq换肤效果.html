@@ -42,12 +42,19 @@
 
 <body>
     <ul class="baidu">
-        <li><img src="img/1.jpg"></li>
-        <li><img src="img/2.jpg"></li>
-        <li><img src="img/3.jpg"></li>
-        <li><img src="img/4.jpg"></li>
+        <li><img src="./img/1.jpg"></li>
+        <li><img src="./img/2.jpg"></li>
+        <li><img src="./img/3.jpg"></li>
+        <li><img src="./img/4.jpg"></li>
     </ul>
     <script>
+        var imgs = document.querySelectorAll("li img");
+            imgs.forEach(function(item){
+            item.onclick = function(){
+                // document.body.style.background = "url("+ item.src +")"
+                document.body.style.background = `url(${item.src})`
+            }
+        });
         
     </script>
 </body>

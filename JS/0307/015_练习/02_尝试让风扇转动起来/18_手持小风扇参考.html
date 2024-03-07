@@ -36,6 +36,8 @@
             box-sizing: border-box;
             border-radius: 50%;
             border: 8px solid #333;
+
+            
         }
 
         .top-part .left-box .leaf {
@@ -48,6 +50,7 @@
             border-radius: 50%;
             background-color: rgb(106, 106, 235);
             margin-top: -100px;
+            
         }
 
         .top-part .left-box .leaf:nth-child(2) {
@@ -129,15 +132,24 @@
         }
 
         .leaf-ani1 {
-            animation: ani 1s infinite linear;
+            animation: ani 3s infinite linear;
         }
 
         .leaf-ani2 {
-            animation: ani 0.8s infinite linear;
+            animation: ani 1s infinite linear;
         }
 
         .leaf-ani3 {
-            animation: ani 0.5s infinite linear;
+            animation: ani 0.1s infinite linear;
+        }
+
+        @keyframes ani {
+            0%{
+                transform: rotate(0);
+            }
+            100%{
+                transform: rotate(360deg);
+            }
         }
 
     </style>
@@ -166,21 +178,34 @@
             <div class="item" onclick="myfunction(1)">1</div>
             <div class="item" onclick="myfunction(2)">2</div>
             <div class="item" onclick="myfunction(3)">3</div>
-            <div class="item">关</div>
+            <div class="item" onclick="myfunction(4)">关</div>
         </div>
 
     <script>
         function myfunction(flag){
-            
+            var leaf = document.querySelector(".top-part .left-box") 
+
+
             switch (flag) {
-                case 1:                    
-                    document.querySelector(".bom-part .item:nth-child(1)").classList.add("leaf-ani1")
+                case 1:
+                    leaf.classList.remove("leaf-ani2")                    
+                    leaf.classList.remove("leaf-ani3")                      
+                    leaf.classList.add("leaf-ani1")
                     break;
-                case 2:                    
-                    this.classList.add(".leaf-ani2")
+                case 2:
+                    leaf.classList.remove("leaf-ani1")                    
+                    leaf.classList.remove("leaf-ani3")                    
+                    leaf.classList.add("leaf-ani2")
                     break;
-                case 3:                    
-                    this.classList.add(".leaf-ani3")
+                case 3:   
+                    leaf.classList.remove("leaf-ani1")                    
+                    leaf.classList.remove("leaf-ani2")                 
+                    leaf.classList.add("leaf-ani3")
+                    break;
+                case 4:   
+                    leaf.classList.remove("leaf-ani1")                    
+                    leaf.classList.remove("leaf-ani2")                 
+                    leaf.classList.remove("leaf-ani3")
                     break;
                 default:
                     break;

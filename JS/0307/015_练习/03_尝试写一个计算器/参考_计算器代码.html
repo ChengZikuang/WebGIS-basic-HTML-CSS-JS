@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+		.container{
+            display: grid;
+            grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            width: 500px;
+            height: 600px;
+            background: #495678;
+            padding: 50px;
+            margin: 50px auto;
+            gap: 33px;
+            border-radius: 30px;
+        }
+
+        .container button{
+            background: #72778b;
+            color: white;
+            font-size: 30px;
+            text-align: center;
+            line-height: 75px;
+            border-radius: 45px;
+            border: none;
+        }
+
+        .container .display{
+            grid-column-start: 2;
+            grid-column-end: 5;
+            background-color: #98d1dc;
+        }
+
+        .container .operator{
+            background: white;
+            color: black;
+        }
+
+        .container .clear , .container .equal{
+            background: #e3844c;
+        }
+    </style>
+</head>
+<body>
+        <div class="container">
+            <button class="clear">c</button>
+            <button class="display"></button>
+            <button class="number">7</button>
+            <button class="number">8</button>
+            <button class="number">9</button>
+            <button class="operator">+</button>
+            <button class="number">4</button>
+            <button class="number">5</button>
+            <button class="number">6</button>
+            <button class="operator">*</button>
+            <button class="number">1</button>
+            <button class="number">2</button>
+            <button class="number">3</button>
+            <button class="operator">-</button>
+            <button class="number">0</button>
+            <button class="operator">.</button>
+            <button class="operator">/</button>
+            <button class="equal">=</button>
+        </div>
+    <script>
+        //获取展示结果的display按钮
+       var displayBtn = document.querySelector('.display')
+
+       //给清除按钮添加点击事件(点击之后清空display按钮中的内容)
+       document.querySelector('.clear').onclick = function(){
+            displayBtn.innerHTML = ''
+       }
+
+       //给除了了第一个,第二个和最后一个按钮以外的其他按钮,添加点击事件(拿到当前按钮的内容拼接展示到display按钮上)
+       var btns = document.querySelectorAll('button')
+       for(var i=2;i<btns.length-1;i++){
+          btns[i].onclick = function(){
+            displayBtn.innerHTML += this.innerHTML 
+          }
+       }
+
+       //给最后一个按钮添加点击事件(执行运算操作)
+       document.querySelector('.equal').onclick = function(){
+            displayBtn.innerHTML = eval(displayBtn.innerHTML)//eval可以将字符串转成js表达式进行运算
+       }
+    </script>
+</body>
+</html>

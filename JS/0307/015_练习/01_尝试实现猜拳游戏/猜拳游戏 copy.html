@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container{
+            width: 350px;
+            height: 300px;
+
+            margin: auto;
+            background-image: url(./bg.jpg);
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+        .input{
+            display: flex;
+        }
+        .input div{
+            /* display: inline-block; */
+            flex : 1,1,1;
+            background-color: white;
+            padding: 20px;
+            margin: auto;
+            margin-top: 5px;
+        }
+        .ontput{
+            display: flex;
+        }
+        .output h3{
+            margin-left: 20px;
+            background-color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="input">
+            <div onclick="paly(this)">石头</div>
+            <div onclick="paly(this)">剪刀</div>
+            <div onclick="paly(this)">布</div>
+        </div>
+        
+        <div class="output">
+            <h3>玩家出拳：</h3>
+            <h3>电脑出拳：</h3>
+            <h3>结果：</h3>
+        </div>
+    </div>
+
+    <script>        
+        //给input中div添加onclick事件，调用函数读取innerText的取值，返回
+        //函数中调用电脑随机出拳函数
+        //打印结果
+        function paly(obj){
+            //获取石头剪刀布
+            var playerres = obj.innerHTML;                    
+
+            //输出石头剪刀布
+            document.querySelector(".output h3:nth-child(1)").innerHTML = "玩家出拳：" + playerres;
+            
+            //电脑结果
+            var computerplayres = computerPlay();
+            document.querySelector(".output h3:nth-child(2)").innerHTML = "电脑出拳：" + computerplayres;
+            
+            //比较结果
+            var judgerres = judger(playerres,computerplayres);
+            document.querySelector(".output h3:nth-child(3)").innerHTML = "结  果：" + judgerres;
+
+        }
+        
+        //电脑随机出拳函数
+        function computerPlay(){            
+            var rand = Math.floor(Math.random() * 3 ) + 1;
+            switch (rand) {
+                case 1:
+                    return "石头"
+                case 2:
+                    return "剪刀"
+                case 3:
+                    return "布"
+            }            
+        }
+
+        function judger(player,computer){
+                if(((player == "剪刀")&&(computer == "布"))
+                ||((player == "布")&&(computer == "石头"))
+                ||((player == "石头")&&(computer == "剪刀"))){
+                    return "player win!"
+                } else if(player == computer) {
+                    return "平局"
+                }else{
+                    return "computer win!"
+                }
+            }
+    </script>
+</body>
+</html>

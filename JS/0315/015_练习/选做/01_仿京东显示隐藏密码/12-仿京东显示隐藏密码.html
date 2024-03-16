@@ -13,14 +13,14 @@
             border-bottom: 1px solid #ccc;
             margin: 100px auto;
         }
-        
+
         .box input {
             width: 370px;
             height: 30px;
             border: 0;
             outline: none;
         }
-        
+
         .box img {
             position: absolute;
             top: 2px;
@@ -38,8 +38,31 @@
         <input type="password" name="" id="pwd">
     </div>
     <script>
-        
+        var eyeicon = document.querySelector("#eye")
+        //添加点击切换事件
+        eyeicon.addEventListener("click", function () {
+            if (this.src.includes("close")) {
+                //修改src
+                this.src = "img/open.png"; 
+                //修改input样式
+                document.querySelector("input").type = "text";
+            }
+            else {
+                //修改src
+                this.src = "img/close.png"; 
+                //修改input样式
+                document.querySelector("input").type = "password";
+            }
+        });
+
     </script>
+
+    <h1>------------------------------</h1>
+    <h3>总结</h3>
+    <h3>遗留问题</h3>
+    <p>addEventListener中是否不能修改函数名称？</p>
+    <P>如何不修改src整体值，而只根据状态修改其中值呢</P>
+    <p>是否一个click无法绑定两个完全相反的事件</p>
 </body>
 
 </html>

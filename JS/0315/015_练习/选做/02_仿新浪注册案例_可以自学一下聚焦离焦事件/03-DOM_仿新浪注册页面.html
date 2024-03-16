@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div {
+            width: 600px;
+            margin: 100px auto;
+        }
+        
+        .message {
+            display: inline-block;
+            font-size: 12px;
+            color: #999;
+            background: url(img/mess.png) no-repeat left center;
+            padding-left: 20px;
+        }
+        
+        .wrong {
+            color: red;
+            background-image: url(img/wrong.png);
+        }
+        
+        .right {
+            color: green;
+            background-image: url(img/right.png);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="register">
+        <input type="password" class="ipt">
+        <p class="message">请输入6~16位密码</p>
+    </div>
+    <script>
+        // 首先判断的事件是表单失去焦点 blur
+        document.querySelector("input").addEventListener("focusout",function(){
+            var psw = this.value;
+            var msg = document.querySelector("p.message");
+
+            if(psw.length < 6 || psw.length > 16){
+                // 如果输入不是6到16位，则提示错误信息颜色为红色 小图标变化
+                console.log("error");
+                msg.innerHTML = "您输入的位数不对,要求6~16位";
+                // msg.classList.remove("right");
+                msg.classList.toggle("wrong");
+            }else{
+            // 如果输入正确则提示正确的信息颜色为绿色小图标变化
+                msg.innerHTML = "您输入的正确"
+                msg.classList.toggle("right");
+            }
+            // 因为里面变化样式较多，我们采取className修改样式
+        })
+       
+    </script>
+
+    <h1>————————————————————————————————————————————————————</h1>
+    <h3>总结</h3>
+    <p>blur 和 事件监听器中focusout 相对应。</p>
+    <p>提前设定组合状态的css,可与交互变化时快速赋值。</p>
+    <h3>遗留问题</h3>
+    <p>classList如何实现新增相对class的同时一次性清空相对应非基本样式？？</p>
+</body>
+
+</html>

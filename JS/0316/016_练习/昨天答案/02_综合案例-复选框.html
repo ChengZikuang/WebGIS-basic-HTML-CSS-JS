@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>复选框</title>
+</head>
+<body>
+    <table id="tab1" border="1" width="800" align="center">
+        <tr>
+            <th style="text-align: left">
+                <input style="background:lightgreen" id="selectAll" type="button" value="全选">
+                <input style="background:lightgreen" id="selectNone" type="button" value="全不选">
+                <input style="background:lightgreen" id="reverse" type="button" value="反选">
+            </th>
+    
+            <th>分类ID</th>
+            <th>分类名称</th>
+            <th>分类描述</th>
+            <th>操作</th>
+        </tr>
+        <tr>
+            <td><input type="checkbox" class="item"></td>
+            <td>1</td>
+            <td>手机数码</td>
+            <td>手机数码类商品</td>
+            <td><a href="">修改</a>|<a href="">删除</a></td>
+        </tr>
+        <tr>
+            <td><input type="checkbox" class="item"></td>
+            <td>2</td>
+            <td>电脑办公</td>
+            <td>电脑办公类商品</td>
+            <td><a href="">修改</a>|<a href="">删除</a></td>
+        </tr>
+        <tr>
+            <td><input type="checkbox" class="item"></td>
+            <td>3</td>
+            <td>鞋靴箱包</td>
+            <td>鞋靴箱包类商品</td>
+            <td><a href="">修改</a>|<a href="">删除</a></td>
+        </tr>
+        <tr>
+            <td><input type="checkbox" class="item"></td>
+            <td>4</td>
+            <td>家居饰品</td>
+            <td>家居饰品类商品</td>
+            <td><a href="">修改</a>|<a href="">删除</a></td>
+        </tr>
+    </table>
+</body>
+
+<script>
+    //全选
+    //1.为全选按钮添加单击事件
+    document.querySelector('#selectAll').onclick = function(){
+        //2.获取所有的商品复选框元素，为其添加checked属性，属性值true
+        var arr = document.querySelectorAll('.item')
+        console.log(arr);
+        for(var i=0;i<arr.length;i++){
+            arr[i].checked = 'checked'//写true也可以
+        }
+        
+    }
+
+    //全不选
+    //1.为全不选按钮添加单击事件
+    document.querySelector("#selectNone").onclick = function(){
+        //2.获取所有的商品复选框元素，为其添加checked属性，属性值false
+        var arr = document.querySelectorAll('.item')
+        for(var i=0;i<arr.length;i++){
+            arr[i].checked = ''//写false也可以
+        }
+    }
+
+
+    //反选
+    //1.为反选按钮添加单击事件
+    document.querySelector("#reverse").onclick=function(){
+        //2.获取所有的商品复选框元素，为其添加checked属性，属性值是目前相反的状态
+        var arr = document.querySelectorAll('.item')
+        for(var i=0;i<arr.length;i++){
+            console.log(arr[i].checked);//打印出来会看到值是true和false
+            //判断
+            if(arr[i].checked == false){
+                arr[i].checked = true
+            }else{
+                arr[i].checked = false
+            }
+        }
+        
+    }
+</script>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <a href="http://www.baidu.com" id="baidu" >百度</a>
+    <div id="div01" style="display:none"><a href="#">百度一下你就知道</a></div>
+	
+	<script>
+		var a = document.querySelector('#baidu');
+		var div01 = document.querySelector('#div01');
+		//鼠标移入到百度上时候 显示 百度一下你就知道
+		a.addEventListener("mouseover",function(){
+			div01.style.display= "block";
+		})
+		//鼠标移出的时候,消失
+		a.addEventListener("mouseout",function(){
+			div01.style.display= "none";
+		})
+		
+	</script>
+
+<h1>--------------------------------------------------------------------</h1>
+  <h3>总结</h3>
+  <ol>
+	<li>mouseover,mouseout</li>
+	<li>div01.style.display= "block"/"none"</li>
+  </ol>
+  <h3>疑问</h3>
+  <ol>
+  </ol>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+</head>
+
+<body>
+  手机号: <input type="text" /> <button>发送</button>
+  <script>
+    var btn = document.querySelector("button");
+    btn.addEventListener("click", function () {
+      var sec = 3;
+      var intervalID = setInterval(()=> {
+        btn.disabled = true;
+        btn.innerHTML = `请${sec}秒后重试`;
+        sec--;
+        if (sec == -1) {
+          clearInterval(intervalID);
+          btn.innerHTML = "发送";
+          btn.disabled = false;
+        }
+      }, 1000)
+    })
+
+  </script>
+
+  <h1>--------------------------------------------------------------------</h1>
+  <h3>总结</h3>
+  <ol>
+    <li>btn.disabled = false;btn.disabled = true;</li>
+    <li>嵌套判断关系先理清</li>
+    <li>setInterval(()=> {},1000)</li>
+  </ol>
+  <h3>疑问</h3>
+  <ol>
+    <li>如何在倒计时结束后，继续给该元素形成相同事件?自动的？</li>
+    <li>每次click即执行函数，本来就是自动的</li>
+    <li>函数值传递？外面的数不能变化读取？</li>
+    <li>btn.disabled = "false";btn.disabled = 'true';????????</li>
+    <li>btn.disabled = true; = 禁用 ，btn.disabled = false; = 不禁用。</li>
+  </ol>
+</body>
+
+</html>

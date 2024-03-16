@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>复选框</title>
+</head>
+<body>
+    <table id="tab1" border="1" width="800" align="center">
+        <tr>
+            <th style="text-align: left">
+                <input style="background:lightgreen" id="selectAll" type="button" value="全选">
+                <input style="background:lightgreen" id="selectNone" type="button" value="全不选">
+                <input style="background:lightgreen" id="reverse" type="button" value="反选">
+            </th>
+    
+            <th>分类ID</th>
+            <th>分类名称</th>
+            <th>分类描述</th>
+            <th>操作</th>
+        </tr>
+        <tr>
+            <td><input type="checkbox" class="item"></td>
+            <td>1</td>
+            <td>手机数码</td>
+            <td>手机数码类商品</td>
+            <td><a href="">修改</a>|<a href="">删除</a></td>
+        </tr>
+        <tr>
+            <td><input type="checkbox" class="item"></td>
+            <td>2</td>
+            <td>电脑办公</td>
+            <td>电脑办公类商品</td>
+            <td><a href="">修改</a>|<a href="">删除</a></td>
+        </tr>
+        <tr>
+            <td><input type="checkbox" class="item"></td>
+            <td>3</td>
+            <td>鞋靴箱包</td>
+            <td>鞋靴箱包类商品</td>
+            <td><a href="">修改</a>|<a href="">删除</a></td>
+        </tr>
+        <tr>
+            <td><input type="checkbox" class="item"></td>
+            <td>4</td>
+            <td>家居饰品</td>
+            <td>家居饰品类商品</td>
+            <td><a href="">修改</a>|<a href="">删除</a></td>
+        </tr>
+    </table>
+</body>
+
+
+<script>
+    var arr = document.querySelectorAll(".item");
+    console.log(arr);
+
+    document.querySelector("#selectAll").addEventListener("click",function(){
+        arr.forEach(function (element) {
+            element.checked = true;
+        });
+    })
+
+    document.querySelector("#selectNone").addEventListener("click",function(){
+        arr.forEach(function (element) {
+            element.checked = false;
+        });
+    })
+    document.querySelector("#reverse").addEventListener("click",function(){
+        arr.forEach(function (element) {
+            element.checked = !(element.checked);
+        });
+    })
+
+</script>
+
+<h1>------------------------------</h1>
+
+<ol><h3>总结</h3>
+    <li>使用arr,在JS多练习写forEach</li>
+    <li>arr.forEach(function(item){
+        item.checked = !(item.checked) //先获取checked状态,然后取反,再赋值给item
+    })</li>
+    <li>自己写代码时，在不熟练前，需要确认每行是否正确运行，再进行下一步填充内容。</li>
+    <li>写代码前，先写步骤的注释。</li>
+</ol>
+
+
+
+<ol><h3>问题</h3>
+    <li>怎样才能监听一个元素产生变化的状态，如何得知你想改变的元素的属性值？</li>
+    <li>arr[1].checked = "false";为什么不行？只能checked = ""?checked = false;为什么又行了</li>
+</ol>
+
+
+
+<!-- <script>
+    //全选
+    //获取全选按钮,添加点击事件
+    document.querySelector('#selectAll').onclick = function(){
+        //获取所有的复选框,设置checked属性值为checked
+        var arr = document.querySelectorAll('.item')
+        //伪数组可以使用forEach
+        arr.forEach(function(item){
+            item.checked = 'checked'  //还可以传 true,因为checked是一个布尔属性
+        })
+    }
+
+    //全不选
+    //获取全不选按钮,添加点击事件
+    document.querySelector('#selectNone').onclick = function(){
+        //获取所有的复选框,设置checked属性值为checked
+        var arr = document.querySelectorAll('.item')
+        //伪数组可以使用forEach
+        arr.forEach(function(item){
+            item.checked = ''  //还可以传 false,因为checked是一个布尔属性
+        })
+    }
+
+    //反选
+    //获取反选按钮,添加点击事件
+    document.querySelector('#reverse').onclick = function(){
+        //获取所有的复选框,设置checked属性值为checked
+        var arr = document.querySelectorAll('.item')
+        //伪数组可以使用forEach
+        arr.forEach(function(item){
+            item.checked = !(item.checked) //先获取checked状态,然后取反,再赋值给item
+        })
+    }
+    
+</script> -->
+</html>

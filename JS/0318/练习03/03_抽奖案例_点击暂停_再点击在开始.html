@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+
+</head>
+
+<body>
+    <span id="layer">000000</span>
+    <input id="btn" type="button" value='生成随机数' />
+
+    <script>
+        var obj = document.querySelector("#layer");
+        var btn = document.querySelector("#btn");
+
+        var timer = null;
+        var isFlag = true;
+        //点击btn事件
+        btn.addEventListener("click", function () {
+            if (isFlag) {
+                timer = setInterval(show, 100);
+                isFlag = false;                
+            } else {
+                clearInterval(timer);
+                isFlag = true;
+            }        
+        })
+        //每0.1秒重复显示随机数
+        function show() {
+            //输出 000000-999999
+            let maxFloored = 999999;
+            let minCeiled  = 100000;
+            obj.innerHTML = Math.floor(Math.random() * (maxFloored - minCeiled + 1) + minCeiled);
+        }
+    </script>
+
+
+
+    <hr>
+    <h3>问题</h3>
+    <ol>
+        <li>如何实现再次点击却切换不同的事件执行结果？</li>
+        <P>通过flag控制点击后执行哪一段。</P>
+        <li>怎么实现打印000000而不是0？003330，3330</li>
+    </ol>
+</body>
+
+</html>

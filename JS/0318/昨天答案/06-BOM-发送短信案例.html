@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    手机号: <input type="text" /> <button>发送</button>
+    <script>
+        /* 
+          思路:
+            1,获取按钮,添加点击事件
+            2,点击之后,开启定时(一秒钟修改一下按钮的内容),禁用按钮
+            3,当定时器的秒数减为0的时候,关闭定时,同时让按钮可用
+        */
+
+        //获取按钮
+         var btn = document.querySelector('button')
+
+         //添加事件
+        btn.addEventListener('click',function(){
+           var second = 3  //需要将second放在事件函数里面,每次点击的时候,会自动重置为3
+           //禁用按钮
+           btn.disabled = true
+
+           //开启定时
+           var timer = setInterval(function(){
+
+              //判断
+              if(second <= 0){
+                //结束定时
+                clearInterval(timer)
+                btn.innerHTML = '发送'
+                btn.disabled = false
+                return
+              }
+
+              //修改按钮上的文字
+              btn.innerHTML = second + '秒后重试'
+              second--
+           },1000)
+
+        })
+    </script>
+  </body>
+</html>

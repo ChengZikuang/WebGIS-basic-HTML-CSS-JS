@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        input {
+            color: #999;
+        }
+    </style>
+</head>
+
+<body>
+    <input type="text" value="婴幼儿奶粉">
+    <script>
+
+        // 需求:
+        // 文本框获得焦点时, 文字颜色变浅, 文本框的内容清空
+        // 文本框失去焦点时, 颜色恢复, 文本框为空时, 提示内容
+
+        // 1.获取dom元素
+        var text = document.querySelector('input');
+        // 2.绑定事件 获得焦点事件 onfocus 
+        text.onfocus = function() {
+                // console.log('得到了焦点');
+                if (this.value === '婴幼儿奶粉') {
+                    this.value = '';
+                }
+                // 获得焦点需要把文本框里面的文字颜色变黑
+                this.style.color = '#333';
+            }
+            // 3. 绑定事件 失去焦点事件 onblur
+        text.onblur = function() {
+            // console.log('失去了焦点');
+            if (this.value === '') {
+                this.value = '婴幼儿奶粉';
+            }
+            // 失去焦点需要把文本框里面的文字颜色变浅色
+            this.style.color = '#999';
+        }
+    </script>
+
+</body>
+
+</html>

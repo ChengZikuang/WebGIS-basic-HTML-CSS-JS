@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+
+</head>
+<body>
+    <span  id="layer">000000</span>
+    <input id="btn" type="button" value='生成随机数'/>
+
+    <script>
+        
+
+        /*
+            1,定义一个方法,不断的修改span的标签体的值
+            2,获取按钮对象,添加点击事件
+            3,在事件中,点击开启定时,再点击关闭定时
+         */
+
+         // 1,定义一个方法,不断的修改span的标签体的值
+         function updateSpan(){
+            var span = document.querySelector('#layer')
+            //赋值随机数(100000-999999)
+            span.innerHTML = Math.floor(Math.random()*900000)+1000000
+         }
+
+         //定义一个标记
+         var flag = false
+
+         //定义一个变量保存定时器
+         var timer = null
+
+         //添加事件
+         var btn = document.querySelector('#btn')
+         btn.addEventListener('click',function(){
+            //使用定时器来修改
+            if(flag == false){
+                 timer = setInterval(updateSpan,10)
+                flag = true
+            }else{
+                clearInterval(timer)
+                flag = false
+            }
+            
+         })
+        
+
+
+        
+
+    </script>
+</body>
+</html>

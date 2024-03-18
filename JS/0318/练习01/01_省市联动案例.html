@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+
+	<!-- 
+			
+		    "郑州","洛阳","开封"
+		    "沈阳","大连","鞍山"
+		    "青岛","济南","烟台"
+		    
+		-->
+</head>
+
+<body>
+	<select id="province">
+		<option>--选择省--</option>
+		<option>河南省</option>
+		<option>辽宁省</option>
+		<option>山东省</option>
+	</select>
+
+
+	<select id="city">
+		<option>--选择市--</option>
+	</select>
+
+	<script>
+		var province = document.querySelector("#province");
+		var city = document.querySelector("#city");
+		province.addEventListener("change", function () {
+			let index = province.selectedIndex;
+			switch (index) {
+				case 1:
+					let arr1 = ["郑州", "洛阳", "开封"];
+					while (city.length > 1) {
+						city.remove(city.length - 1)
+					}
+					arr1.forEach(element => {
+						// console.log(element);
+						let opt = document.createElement('option');
+						opt.innerHTML = element;
+						city.add(opt);
+					});
+					break;
+				case 2:
+					let arr2 = ["沈阳", "大连", "鞍山"];
+					while (city.length > 1) {
+						city.remove(city.length - 1)
+					}
+					arr2.forEach(element => {
+						// console.log(element);
+						let opt = document.createElement('option');
+						opt.innerHTML = element;
+						city.add(opt);
+					});
+					break;
+				case 3:
+					let arr3 = ["青岛", "济南", "烟台"];
+					while (city.length > 1) {
+						city.remove(city.length - 1)
+					}
+					arr3.forEach(element => {
+						// console.log(element);
+						let opt = document.createElement('option');
+						opt.innerHTML = element;
+						                                                                    
+						city.add(opt);
+					});
+					break;
+
+				default:
+					break;
+			}
+		})
+
+		city.addEventListener("change",function () {
+			let index = city.selectedIndex;
+			console.log(city[index].innerHTML);
+		})
+		
+	</script>
+
+	<h1>--------------------------------------------------------------------</h1>
+	<h3>总结</h3>
+	<ol>
+		<li>onchange监听事件发生</li>
+		<li>selectedIndex确定元素</li>
+		<li>先排他后添加</li>
+		<li>请善用w3cSchool参考手册！</li>
+	</ol>
+	<h3>疑问</h3>
+	<ol>
+	</ol>
+</body>
+
+</html>

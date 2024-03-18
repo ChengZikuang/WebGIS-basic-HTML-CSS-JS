@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>动态表格</title>
+
+    <style>
+        table {
+            border: 1px solid;
+            margin: auto;
+            width: 500px;
+        }
+
+        td,
+        th {
+            text-align: center;
+            border: 1px solid;
+        }
+
+        div {
+            text-align: center;
+            margin: 50px;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div>
+        <input type="text" id="name" placeholder="请输入姓名" autocomplete="off">
+        <input type="text" id="age" placeholder="请输入年龄" autocomplete="off">
+        <input type="button" value="添加" id="add">
+    </div>
+
+    <table id="tb">
+        <caption>学生信息表</caption>
+        <tr>
+            <th>姓名</th>
+            <th>年龄</th>
+            <th>操作</th>
+        </tr>
+
+        <tr>
+            <td>张三</td>
+            <td>23</td>
+            <td><a href="JavaScript:void(0);" onclick="drop(this)">删除</a></td>
+        </tr>
+
+        <tr>
+            <td>李四</td>
+            <td>24</td>
+            <td><a href="JavaScript:void(0);" onclick="drop(this)">删除</a></td>
+        </tr>
+
+    </table>
+    <script>
+        var addbtn = document.querySelector("#add");
+        var tb = document.querySelector("#tb");
+        var nowrow = 2 ;
+        //2.新增信息表行数，填入动态获取值及固定删除样式
+        addbtn.onclick = function () {
+            //创建最新行
+            let row = tb.insertRow(++nowrow);
+            //1.动态获取输入的姓名和年龄
+            let namevalue = document.querySelector("#name").value;
+            let agevalue = document.querySelector("#age").value;
+            //添加属性值
+            // if (fix(namevalue, agevalue)) {
+            // }
+            row.insertCell(0).innerHTML = namevalue;
+            row.insertCell(1).innerHTML = agevalue;
+            //修改删除值样式,将删除新增a标签内容，及绑定删除事件
+            row.insertCell(2).append(createAnode());
+        }
+        //创建固定样式a标签
+        function createAnode() {
+            const anode = document.createElement('a');
+            anode.innerHTML = "删除";
+            anode.href = "JavaScript:void(0);" ;
+            anode.addEventListener("click",drop);
+            return anode;
+        }
+
+        //删除事件函数
+        function drop(params) {
+            console.log(params); 
+        }
+
+    </script>
+
+    <hr>
+    <h3>问题</h3>
+    <ol>
+        <li></li>
+    </ol>
+    <h3>完善</h3>
+    <ol>
+        <li></li>
+    </ol>
+
+</body>
+
+</html>

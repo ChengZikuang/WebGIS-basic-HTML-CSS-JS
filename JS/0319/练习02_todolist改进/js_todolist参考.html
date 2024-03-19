@@ -1,0 +1,180 @@
+<head>
+    <meta charset="UTF-8">
+    <title>TodoList</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .myhead {
+            background-color: #0b87ff;
+            text-align: center;
+            padding: 5px 0px 10px 0px;
+            color: aliceblue;
+        }
+
+        .myhead .box {
+            margin-top: 10px;
+            display: flex;
+            gap: 5px;
+            justify-content: center;
+        }
+
+        .thing {
+            width: 300px;
+            height: 30px;
+            padding: 0 10px;
+            border-radius: 3px;
+            outline: none;
+            border: solid 1px white;
+        }
+
+        .add {
+            display: inline-block;
+            width: 80px;
+            height: 30px;
+            background-color: #eee;
+            color: #0b87ff;
+            line-height: 30px;
+            border: none;
+            border-radius: 3px;
+        }
+
+        .add:hover {
+            cursor: pointer;
+            background-color: #fff;
+            color: #ff6700;
+        }
+
+        ul li {
+            list-style: none;
+            position: relative;
+            padding-left: 40px;
+            height: 40px;
+            line-height: 40px;
+        }
+
+        /* 将所有奇数列表项设置为不同的颜色（斑马线）*/
+        ul li:nth-child(odd) {
+            background-color: #f9f9f9;
+        }
+
+        /* 光标移入的时候背景变暗 */
+        ul li:hover {
+            cursor: pointer;
+            background-color: #dddddd;
+        }
+
+        /* 单击时，添加背景色并删除文本 */
+        ul li.check {
+            background-color: #888888;
+            text-decoration: line-through;
+            color: #f9f9f9;
+        }
+
+        /* 单击时添加“已选中”标记 */
+        ul li.check::before {
+            content: '';
+            position: absolute;
+            border-color: #fff;
+            border-style: solid;
+            border-width: 0 2px 2px 0;
+            top: 10px;
+            left: 16px;
+
+            transform: rotate(45deg);
+            height: 15px;
+            width: 7px;
+        }
+
+        /* 设置关闭按钮的样式 */
+        .close {
+            position: absolute;
+            right: 0px;
+            top: 0px;
+            padding: 0px 20px;
+            font-size: 16px;
+        }
+
+        .close:hover {
+            background-color: #f44336;
+            color: white;
+        }
+    </style>
+
+</head>
+
+<body>
+    <!-- 头部 -->
+    <div class="myhead">
+        <h2>My ToDo List</h2>
+        <div class="box">
+            <input type="text" placeholder="请输入待办事项..." class="thing">
+            <button class="add">添加</button>
+        </div>
+    </div>
+
+    <!-- 待办事项部分，内容动态生成 -->
+    <ul>
+        <!-- <li>吃饭<span class="close">x</span></li>
+        <li>睡觉<span class="close">x</span></li> -->
+    </ul>
+
+</body>
+
+<script>
+    /* 
+        步骤
+            1,获取添加按钮,监听它的点击事件
+            2,在点击事件中,获取文本框中的内容
+            3,创建li元素,将文本框内容填充进去
+            4,给li元素绑定点击事件,点击的时候切换样式
+            5,给li元素添加删除按钮(创建span标签,绑定删除事件)
+    */
+   //获取添加按钮
+    var addBtn = document.querySelector('.add')
+
+    //给添加按钮绑定事件
+    addBtn.addEventListener('click',function(){
+        //获取文本框中的内容
+        var value = document.querySelector('.thing').value
+
+        //创建li元素,将文本框内容填充进去
+        var li = document.createElement('li')
+        li.innerHTML = value
+
+        //给li元素绑定点击事件,点击的时候切换样式
+        li.addEventListener('click',function(){
+            this.classList.toggle('check')
+        })
+
+        //给li元素添加删除按钮(创建span标签,绑定删除事件)
+        var span = document.createElement('span')
+        span.innerHTML = 'x'
+        span.classList.add('close')
+        span.addEventListener('click',function(e){
+            //阻止事件冒泡
+            e.stopPropagation()
+
+            //删除span所在的li
+            //先通过span找到当前li的爹
+            var father = span.parentNode.parentNode
+            //再通过span找到当前的li
+            var son = span.parentNode
+            //调用删除方法
+            father.removeChild(son)
+        })
+        li.appendChild(span)
+    
+
+        //将li元素添加到ul下面
+        document.querySelector('ul').appendChild(li)
+
+        //输入完后清空文本框中内容
+        document.querySelector('.thing').value = ''
+    })
+</script>
+
+</html>

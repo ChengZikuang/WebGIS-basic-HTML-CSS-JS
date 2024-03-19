@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="clock"></div>
+
+    <script>
+        /* 定义一个方法,修改div的标签体 */
+        function updateDiv(){
+            var today = new Date()
+            var h = today.getHours()
+            var m = checkTime(today.getMinutes())
+            var s = checkTime(today.getSeconds())
+            document.querySelector('.clock').innerHTML = `${h}:${m}:${s}`
+        }
+
+        /* 定义一个方法, 检查时间,如果小于10,前面加0*/
+        function checkTime(i){
+            if(i<10){
+                i = '0' + i
+            }
+            return i
+        }
+
+        //需要在页面加载完成之后,显示时间
+        window.onload = updateDiv
+
+        /* 启动定时器 */
+        setInterval(updateDiv,1000)
+    </script>
+</body>
+</html>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>动态表格</title>
+
+    <style>
+        table{
+            border: 1px solid;
+            margin: auto;
+            width: 500px;
+        }
+
+        td,th{
+            text-align: center;
+            border: 1px solid;
+        }
+        div{
+            text-align: center;
+            margin: 50px;
+        }
+    </style>
+
+</head>
+<body>
+
+<div>
+    <input type="text" id="name" placeholder="请输入姓名" autocomplete="off">
+    <input type="text" id="age"  placeholder="请输入年龄" autocomplete="off">
+    <input type="button" value="添加" id="add">
+</div>
+
+    <table id="tb">
+        <caption>学生信息表</caption>
+        <tr>
+            <th>姓名</th>
+            <th>年龄</th>
+            <th>操作</th>
+        </tr>
+
+        <tr>
+            <td>张三</td>
+            <td>23</td>
+            <td><a href="JavaScript:void(0);" onclick="drop(this)">删除</a></td>
+        </tr>
+
+        <tr>
+            <td>李四</td>
+            <td>24</td>
+            <td><a href="JavaScript:void(0);" onclick="drop(this)">删除</a></td>
+        </tr>
+
+    </table>
+
+    <script>
+        /* 
+            方式二:使用HTML的DOM对象特有的方法
+
+                table的方法
+                    insertRow()	在表格中插入一个新行。
+                tr的方法
+                    insertCell()	在一行中的指定位置插入一个空的元素。
+        */
+
+        //获取按钮,添加点击事件
+        document.querySelector('#add').addEventListener('click',function(){
+            
+            //获取文本框中的数据
+            var name = document.querySelector('#name').value
+            var age = document.querySelector('#age').value
+
+            //获取table
+            var table = document.querySelector('#tb')
+
+            //调用table的方法插入一行
+            var tr = table.insertRow()  //返回当前插入的这一行
+
+            //调用tr插入3个单元格
+            var nameTd = tr.insertCell()
+            var ageTd = tr.insertCell()
+            var deleteTd = tr.insertCell()
+
+            //填充数据
+            nameTd.innerHTML = name
+            ageTd.innerHTML = age
+            deleteTd.innerHTML = `<a href="JavaScript:void(0);" onclick="drop(this)">删除</a>`
+            
+        })
+
+        //删除方法
+        function drop(obj){
+            //通过a标签找到所在的行
+            var tr =  obj.parentNode.parentNode
+            //再找到这个table
+            var table =  obj.parentNode.parentNode.parentNode
+            //删除
+            table.removeChild(tr)
+        }
+
+    </script>
+
+</body>
+<script>
+    
+    
+    
+</script>
+</html>

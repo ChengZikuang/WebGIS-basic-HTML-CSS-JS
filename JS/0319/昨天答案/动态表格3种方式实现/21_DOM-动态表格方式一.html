@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>动态表格</title>
+
+    <style>
+        table{
+            border: 1px solid;
+            margin: auto;
+            width: 500px;
+        }
+
+        td,th{
+            text-align: center;
+            border: 1px solid;
+        }
+        div{
+            text-align: center;
+            margin: 50px;
+        }
+    </style>
+
+</head>
+<body>
+
+<div>
+    <input type="text" id="name" placeholder="请输入姓名" autocomplete="off">
+    <input type="text" id="age"  placeholder="请输入年龄" autocomplete="off">
+    <input type="button" value="添加" id="add">
+</div>
+
+    <table id="tb">
+        <caption>学生信息表</caption>
+        <tr>
+            <th>姓名</th>
+            <th>年龄</th>
+            <th>操作</th>
+        </tr>
+
+        <tr>
+            <td>张三</td>
+            <td>23</td>
+            <td><a href="JavaScript:void(0);" onclick="drop(this)">删除</a></td>
+        </tr>
+
+        <tr>
+            <td>李四</td>
+            <td>24</td>
+            <td><a href="JavaScript:void(0);" onclick="drop(this)">删除</a></td>
+        </tr>
+
+    </table>
+
+    <script>
+        /* 
+            方式一:使用标准的dom实现
+
+            步骤
+                1,获取按钮,添加点击事件
+                2,创建行,单元格,将单元格添加到行里面
+                3,获取文本框中的数据,填充到单元格中
+                4,将行添加到表格中
+        */
+
+        //获取按钮,添加点击事件
+        document.querySelector('#add').addEventListener('click',function(){
+            //创建行 
+            var tr = document.createElement('tr')
+            //创建单元格
+            var nameTd = document.createElement('td')
+            var ageTd = document.createElement('td')
+            var deleteTd = document.createElement('td')
+            //将td添加到行中
+            tr.appendChild(nameTd)
+            tr.appendChild(ageTd)
+            tr.appendChild(deleteTd)
+            //获取文本框中的数据
+            var name = document.querySelector('#name').value
+            var age = document.querySelector('#age').value
+            //填充到单元格中
+             nameTd.innerHTML = name
+             ageTd.innerHTML = age
+             //创建删除的a标签,设置属性,添加Td
+             var a = document.createElement('a')
+             a.innerHTML = '删除'
+             a.href = 'JavaScript:void(0);'//可以确保点击a标签的时候,不会跳转,而是删除,可以保留超链接的样式
+             //a.onclick = 'drop(this)'//间写的方法只适合设置元素固有的属性,比如a的href,img的src
+             a.setAttribute('onclick','drop(this)') //如果是元素自定义的属性,建议使用这个方法
+             deleteTd.appendChild(a)
+             //将行添加到表格
+             document.querySelector('#tb').appendChild(tr)
+        })
+
+        //删除方法
+        function drop(obj){
+            //通过a标签找到所在的行
+            var tr =  obj.parentNode.parentNode
+            //再找到这个table
+            var table =  obj.parentNode.parentNode.parentNode
+            //删除
+            table.removeChild(tr)
+        }
+
+    </script>
+
+</body>
+<script>
+    
+    
+    
+</script>
+</html>

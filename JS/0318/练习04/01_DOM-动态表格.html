@@ -72,7 +72,7 @@
             row.insertCell(0).innerHTML = namevalue;
             row.insertCell(1).innerHTML = agevalue;
             //修改删除值样式,将删除新增a标签内容，及绑定删除事件
-            row.insertCell(2).append(createAnode());
+            row.insertCell(2).appendChild(createAnode());
         }
         //创建固定样式a标签
         function createAnode() {
@@ -85,7 +85,9 @@
 
         //删除事件函数
         function drop(params) {
-            console.log(params); 
+            console.dir(params.parentElement); 
+            //获取当前行删除
+            // deleteRow()
         }
 
     </script>

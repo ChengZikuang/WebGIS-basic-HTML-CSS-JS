@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		 
+		<!-- 
+			
+		    "郑州","洛阳","开封"
+		    "沈阳","大连","鞍山"
+		    "青岛","济南","烟台"
+		    
+		-->
+		<script type="text/javascript">
+			function selectCity() {
+				//定义一个二维数组，一个数组他的元素也是数组
+				var arr = [[],[ "郑州","洛阳","开封"],[ "沈阳","大连","鞍山"],["青岛","济南","烟台"]];
+				
+				//获取省的元素对象
+				var provinceElement = document.getElementById("province");				
+				//获取市的元素对象
+				var cityElement = document.getElementById("city");
+				
+				//选中选项的索引
+				var index = provinceElement.selectedIndex;
+				//alert(index);
+				
+				//根据选中的省份索引查找对应的城市
+				var cityArr = arr[index];
+				
+				//清空城市下拉选择框
+				cityElement.innerHTML = "<option>--选择市--</option>";
+				
+				//遍历城市数组，获取一个省份对应的每一个城市
+				for(var x = 0;x < cityArr.length;x++) {
+					var s = "<option>"+cityArr[x]+"</option>";	
+					cityElement.innerHTML += s;
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<select id="province" onchange="selectCity();">
+			<option>--选择省--</option>
+			<option>河南省</option>
+			<option>辽宁省</option>
+			<option>山东省</option>
+		</select>
+		
+		
+		<select id="city">
+			<option>--选择市--</option>
+		</select>
+
+	</body>
+</html>

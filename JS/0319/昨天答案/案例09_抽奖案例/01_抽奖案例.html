@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+        body{
+            padding: 200px;
+            text-align: center;
+        }
+    </style>
+
+</head>
+<body>
+    <span  id="layer">000000</span>
+    <input id="btn" type="button" value='生成随机数'/>
+
+    <script>
+        //生成随机数 范围是 [100000-999999]
+        //Math.floor(Math.random()*(max-min + 1)) + min;
+
+        //999999-100000=899999+1=900000
+        /*var num = Math.floor(Math.random()*(900000)) + 100000;
+        alert(num)*/
+
+
+        /*
+            1,定义一个方法,不断的修改span的标签体的值
+            2,获取按钮对象,添加点击事件
+            3,在事件中,点击开启定时,再点击关闭定时
+         */
+        //定义一个方法,不断的修改span的标签体的值
+        function startRoll() {
+            //获取span标签对象
+            var span = document.getElementById("layer");
+            //修改标签体的值
+            span.innerHTML = Math.floor(Math.random()*(900000)) + 100000;
+        }
+        //获取按钮对象
+        var btn = document.getElementById("btn");
+
+        //设置标记,来切换
+        var flag = false;
+
+        //定义变量,保存定时器的id
+        var id;
+
+        //添加点击事件
+        btn.onclick = function () {
+            if (flag){
+                //关闭定时
+                clearInterval(id);
+                flag = false;
+            }else {
+                //启动定时
+                id = setInterval("startRoll()",10)
+                flag = true;
+            }
+        }
+
+    </script>
+</body>
+</html>

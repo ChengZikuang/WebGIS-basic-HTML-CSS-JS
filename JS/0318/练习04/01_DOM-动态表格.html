@@ -58,44 +58,52 @@
     <script>
         var addbtn = document.querySelector("#add");
         var tb = document.querySelector("#tb");
-        var nowrow = 2 ;
+        // var nowrow = 2 ;
         //2.新增信息表行数，填入动态获取值及固定删除样式
         addbtn.onclick = function () {
             //创建最新行
-            let row = tb.insertRow(++nowrow);
+            let tr = tb.insertRow();
             //1.动态获取输入的姓名和年龄
             let namevalue = document.querySelector("#name").value;
             let agevalue = document.querySelector("#age").value;
             //添加属性值
             // if (fix(namevalue, agevalue)) {
             // }
-            row.insertCell(0).innerHTML = namevalue;
-            row.insertCell(1).innerHTML = agevalue;
+            tr.insertCell(0).innerHTML = namevalue;
+            tr.insertCell(1).innerHTML = agevalue;
             //修改删除值样式,将删除新增a标签内容，及绑定删除事件
-            row.insertCell(2).appendChild(createAnode());
+            tr.insertCell(2).appendChild(createAnode());
         }
         //创建固定样式a标签
         function createAnode() {
             const anode = document.createElement('a');
             anode.innerHTML = "删除";
             anode.href = "JavaScript:void(0);" ;
-            anode.addEventListener("click",drop);
+            anode.setAttribute("onclick","drop(this)");
+            // console.dir(anode) 
             return anode;
         }
 
         //删除事件函数
         function drop(params) {
-            console.dir(params.parentNode.parentNode); 
+            // console.dir(params.parentNode); 
+            // console.dir(params.parentNode.parentNode); 
             //获取当前行删除
-            // deleteRow()
+            tb.deleteRow(params.parentNode.parentNode.rowIndex);
         }
 
     </script>
 
     <hr>
-    <h3>问题</h3>
+    <h3>总结</h3>
     <ol>
-        <li></li>
+        <li>table中的方法及获取td、tr等方式<br>
+            tb.insertRow、tr.insertCell、tb.deleteRow(rowIndex)
+        </li>
+        
+        <li>a标签中的属性添加<br>
+            专有属性和dom中通用属性及方法setAttribute
+        </li>
     </ol>
     <h3>完善</h3>
     <ol>

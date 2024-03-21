@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p>不管输入是否正确，输入框都会再输入后清空。</p>
+    <p>请输入 5 ~ 10 之间的数字：</p>
+        <p>若什么都没有输入:提示 错误:值是空的</p>
+        <p>若输入的数大于10:提示 错误:太大</p>
+        <p>若输入的数小于5:提示 错误:太小</p>
+
+    <input id="demo" type="text">
+    <button type="button" onclick="myFunction()">点我</button>
+
+    <p id="p01"></p>
+
+    <script>
+        function myFunction() {
+            //获取文本框和p对象
+            var input = document.querySelector('input')
+            var p = document.querySelector('#p01')
+
+            //获取文本框的值
+            var value = input.value
+
+            //判断
+            try {
+                //根据值的情况手动抛出异常
+                if(value == '') throw '空的'
+                if(value > 10) throw '太大'
+                if(value <  5) throw '太小'
+                if(value >= 5 && value <= 10) throw '正确'
+            } catch (error) {
+                //处理异常信息(获取抛出的异常信息填充到p中)
+                p.innerHTML = `输入的值:${error}`
+            }finally{
+                //不管输入是否正确，输入框都会再输入后清空
+                input.value = ''
+            }
+            
+        }
+    </script>
+
+</body>
+
+</html>

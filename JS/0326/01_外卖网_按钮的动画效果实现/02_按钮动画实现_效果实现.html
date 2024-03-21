@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .btn {
+            position: relative;
+            padding: 13px 25px;
+            background-color: orange;
+            color: white;
+            border-radius: 10px;
+            transition: all 1s;
+            overflow: hidden;
+            position: relative;
+            border: 2px solid orange;
+
+            margin: 200px;
+        }
+
+        .btn:hover {
+            color: orange;
+            border: 2px solid orange;
+        }
+
+        /* 
+            实现步骤
+                1,使用伪元素在按钮的前面生成一个倾斜旋转的矩形,使用定位让矩形处于按钮的上方
+                2,在按钮hover属性中,让矩形在鼠标移入的时候,滑动下去(改变位移)
+                3,使用伪元素在按钮的后面生成一个新的按钮(只设置文字),默认隐藏
+                4,在按钮hover属性中,让新的按钮在鼠标移入的时候,显示出来
+        */
+        .btn::before{
+            position: absolute;
+            top: 0;
+            left: 0;
+
+            content: '';
+            width: 200%;
+            height: 300%;
+            background: white;
+            transform: translateY(-150px) skewY(25deg);
+
+            transition: all 0.5s;
+        }
+
+        .btn:hover::before{
+            transform: translateY(0) skewY(25deg);
+        }
+
+        /* 使用伪元素在按钮的后面生成一个新的按钮(只设置文字),默认隐藏 */
+        .btn::after{
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+
+            content: '现在订购';
+            padding: 13px 25px;
+        }
+
+        .btn:hover:after{
+            display: block;
+        }
+    </style>
+    
+
+</body>
+    <button class="btn">现在订购</button>
+</html>

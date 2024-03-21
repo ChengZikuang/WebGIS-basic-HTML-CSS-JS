@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
+	<title>forever love</title>
+</head>
+<link rel="stylesheet" href="./iconfont/iconfont.css">
+
+<style type="text/css">
+	* {
+		padding: 0;
+		margin: 0;
+		box-sizing: border-box;
+	}
+
+	body {
+		max-width: 600px;
+		margin: 0 auto;
+		background: #0b3443;
+		color: #f0f0f0;
+	}
+
+	.content {
+		padding: 80px 30px;
+	}
+
+	/* 页面上部分提示内容 */
+	.top_info {
+		display: flex;
+	}
+
+	.top_info .text {
+		padding: 20px;
+		font-size: 20px;
+	}
+
+	/* 隐藏样式 */
+	.hide {
+		display: none;
+	}
+
+	.btn-groups {
+		display: flex;
+		justify-content: space-around;
+	}
+
+	/*按钮前面的字体图标 */
+	.icon-xihuan {
+		font-size: 30px;
+	}
+
+	/* 左边愿意按钮 */
+	.leftBtn {
+		color: #f45cae;
+	}
+
+	/* 右边愿意按钮 */
+	.rightBtn {
+		color: #c9c9c9;
+	}
+
+
+	/* 动态弹框容器的样式 */
+	.modal {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		width: 80%;
+		height: 160px;
+		background: white;
+		padding: 20px 15px;
+		transform: translate(-50%, -70%);
+		border-radius: 5px;
+	}
+
+	.modal p {
+		margin: 20px 0;
+		color: #353535;
+		text-align: center;
+	}
+
+	/* 动态弹框容器中按钮的样式 */
+	.confirm {
+		display: block;
+		width: 120px;
+		height: 40px;
+		background: #f45cae;
+		margin: 0 auto;
+		border: none;
+		color: #ffffff;
+		border-radius: 5px;
+	}
+
+	/* 最后打字机容器的样式 */
+	.printWords {
+		padding: 50px 10px;
+		color: white;
+		font-size: 35px;
+	}
+</style>
+
+
+<body>
+	<!-- 第一页 -->
+	<div class="page_one">
+		<!-- 上面的图片和文字 -->
+		<div class="content">
+			<div class="top_info">
+				<img src="images/a8.png" alt="">
+				<div class="text">
+					小姐姐，我好喜欢你，你愿意做我女朋友吗？
+				</div>
+			</div>
+		</div>
+		<!-- 下面的两个按钮 -->
+		<div class="btn-groups">
+			<div class="iconfont icon-xihuan leftBtn">愿意</div>
+			<div class="iconfont icon-xihuan rightBtn">不愿意</div>
+		</div>
+	</div>
+
+	<!-- 第二页:默认隐藏 -->
+	<div class="page_two hide">
+		<div class="printWords"></div>
+	</div>
+
+	<!-- 自定义弹框:默认隐藏 -->
+	<!-- 将添加弹框,点击之后移出弹框,使用js动态的实现 -->
+	<!-- <div class="modal hide">
+		<p>我就知道小姐姐您一定会愿意的。(^_^)</p>
+		<button type="button" class="confirm">确定</button>
+	</div> -->
+
+	<!-- js代码 -->
+	<script>
+		//监听左边按钮
+		document.querySelector('.leftBtn').addEventListener('click',function(){
+			modal('我就知道小姐姐您一定会愿意的。(^_^)',success)
+		})
+
+		//监听右边按钮
+		document.querySelector('.rightBtn').addEventListener('click',function(){
+			modal('明人不说暗花',f1)
+		})
+
+		function f1() { modal('我喜欢你！', f2) }
+		function f2() { modal('我知道你在等我这一句话', f3) }
+		function f3() { modal('请您不要拒绝我', f4) }
+		function f4() { modal('拒绝我，不存在的', f5) }
+		function f5() { modal('这辈子都不可能让你离开我', f6) }
+		function f6() { modal('跟我走吧', f7) }
+		function f7() { modal('房产证上写你名', f8) }
+		function f8() { modal('我会做饭', f9) }
+		function f9() { modal('爱你。么么哒！', f10) }
+		function f10() { modal('行，我们去民政局登记吧', success) }
+
+
+		//将 动态添加弹框,点击确认隐藏弹框,以及调用下一个弹框 封装成一个函数
+		function modal(content,callback){  //callback代表下一个函数
+			//定义弹框的字符串
+			var popFrameString = `<div class="modal">
+									<p>${content}</p>
+									<button type="button" class="confirm">确定</button>
+								</div>`
+			//将弹框字符串转成doc文档
+			var doc = new DOMParser().parseFromString(popFrameString,'text/html')
+			console.log(doc)
+
+			//查找doc文档中的modal元素
+			var popFrame = doc.querySelector('.modal')
+
+			//将弹框添加到页面上
+			document.querySelector('body').appendChild(popFrame)
+
+			//使用事件委托,在点击事件,找到确认按钮,依次刚才添加的modal
+			document.querySelector('body').addEventListener('click',function(e){
+				if(e.target.classList.contains('confirm')){
+					//移除当前添加弹框
+					this.removeChild(document.querySelector('.modal'))/* this代表body*/
+					//调用下一个函数
+					callback()
+				}
+			})
+		}
+
+		//实现成功之后的切换到打字机效果
+		function success(){
+			//让page_one隐藏,让page_two显示
+			document.querySelector('.page_one').classList.add('hide')
+			document.querySelector('.page_two').classList.remove('hide')
+
+			//调用打字机的方法
+			printWords()
+		}
+
+
+		//实现打字机的方法
+		var myWords = '有人说，人的一生会遇到2920万人，而两个人相爱的概率只有0.000049。在这茫茫人海中，两个人能相遇就值得感激，能相爱更是一种难得。所以，我很庆幸上天让我遇见了你。我希望有个如你一般的人，能看完我写过的所有状态，读完我所有的日志，看完我从小到大的照片，试着听我喜欢的歌。如果可以，甚至陪我去我喜欢的地方，只想弥补错过你的青春。'
+		var count  = 0 //初始计数器
+		function printWords(){
+			//获取每次截取的文字
+			let str = myWords.substring(0,count++)
+			console.log(str)
+
+			//填充到打字机的容器中
+			document.querySelector('.printWords').innerHTML = str+'_'
+
+			//执行定时器(使用setTimeout即可)
+			var timer = setTimeout(printWords,150)
+
+			//当count的长度==字数总长度,说明读完了,结束定时器
+			if(count == myWords.length){
+				clearTimeout(timer)
+			}
+		}
+
+		
+	</script>
+
+
+</body>
+
+</html>

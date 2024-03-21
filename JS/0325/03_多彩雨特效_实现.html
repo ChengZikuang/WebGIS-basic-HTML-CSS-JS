@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+
+        body{
+            position: relative;
+            background: black;
+            height: 100vh; /* 高度是100%视口高度 */
+            overflow: hidden;/* 超出屏幕隐藏 */
+        }
+
+        div{
+            position: absolute;;
+            width: 5px;
+            height: 100px;
+            background: linear-gradient(transparent,deeppink);
+            border-radius: 0 0 5px 5px;
+            animation: dropRain 5s infinite;
+        }
+
+        /* 定义动画 */
+        @keyframes dropRain {
+            0%{transform: translateY(-100%);}
+            100%{transform: translateY(100vh);}
+        }
+
+        /* 颜色随机 */
+        div:nth-child(3n+1){
+            background: linear-gradient(transparent,deeppink);
+        }
+        div:nth-child(3n+2){
+            background: linear-gradient(transparent,skyblue);
+        }
+        div:nth-child(3n+3){
+            background: linear-gradient(transparent,gold);
+        }
+
+
+    </style>
+</head>
+<body>
+    <script>
+        /* 
+            1,创建雨滴dom对象
+            2,设置样式
+            3,设置动画
+        */
+
+        //定义雨滴的个数
+        const count = 200
+
+        //获取body父对象对象
+        const body = document.querySelector('body')
+
+        //循环创建雨滴并添加到父元素中
+        for(let i=0;i<count;i++){
+            //创建雨滴对象
+            const drop = document.createElement('div')
+
+            //设置雨滴的left属性的值,实现雨滴水平方向上的偏移
+            drop.style.left = Math.random()*body.offsetWidth + 'px'
+
+            //设置雨滴出现的时间随机的(设置延时时间)
+            drop.style.animationDelay = Math.random()*-5 + 's'
+
+            //设置雨滴下落的持续的时间是随机的
+            drop.style.animationDuration = Math.random()*5 + 1 + 's'
+
+            //添加雨滴到body
+            body.appendChild(drop)
+        }
+
+        
+
+    </script>
+</body>
+</html>

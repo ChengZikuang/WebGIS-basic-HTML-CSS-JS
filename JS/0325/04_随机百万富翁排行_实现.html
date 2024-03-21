@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #f4f4f4;
+            font-family: Arial, Helvetica, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            display: flex;
+            padding: 20px;
+            margin: 0 auto;
+            max-width: 100%;
+            width: 800px;
+        }
+
+        aside {
+            padding: 10px 20px;
+            width: 250px;
+            border-right: 1px solid #111;
+        }
+
+        button {
+            cursor: pointer;
+            background-color: #fff;
+            border-radius: 5px;
+            border: solid 1px #111;
+            display: block;
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        main {
+            flex: 1;
+            padding: 10px 20px;
+        }
+
+        h2 {
+            border-bottom: 1px solid #111;
+            padding-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            font-weight: 300;
+            margin: 0 0 20px;
+        }
+
+        h3 {
+            background-color: #fff;
+            border-bottom: 1px solid #111;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            font-weight: 300;
+            margin: 20px 0 0;
+        }
+
+        .person {
+            display: flex;
+            justify-content: space-between;
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>富豪排行榜</h1>
+    <div class="container">
+        <aside>
+            <button id="add-user">增加富豪</button>
+            <button id="double">加倍财富</button>
+            <button id="sort">富豪排行</button>
+            <button id="show-millionaires">仅显示百万+富豪</button>
+            <button id="calculate-wealth">计算全部财富</button>
+        </aside>
+        <main id="main">
+            <h2><strong>姓名</strong>身价</h2>
+            <!-- <div class="person"><strong>张三</strong>300000</div> -->
+        </main>
+    </div>
+    <script>
+        //姓名数据数组
+        const firstNameArr = ['赵', '钱', '孙', '欧阳', '李', '周', '吴', '郑', '王', '冯', '陈', '褚', '卫', '蒋', '沈', '韩', '杨', '朱', '秦', '尤', '许', '何', '吕', '施', '张', '孔', '曹', '严', '华', '金', '魏', '陶', '姜']
+        const lastNameArr = ['伟', '芳', '娜', '敏', '静', '秀英', '浩然', '小蒙', '子轩', '欣怡', '梓涵', '浩宇', '雨桐', '子墨', '宇航']
+
+        //获取元素
+        const addBtn = document.querySelector('#add-user')
+        const main = document.querySelector('#main')
+        const doubleBtn = document.querySelector('#double')
+        const sortBtn = document.querySelector('#sort')
+        const showBtn = document.querySelector('#show-millionaires')
+        const allBtn = document.querySelector('#calculate-wealth')
+        const allMoneyBox = document.querySelector('.allmoney')
+
+        //定义一个空的数值(数据源)
+        let arr = [] //元素的结构 ['张三',300000]  ['李四',400000]
+
+        //实现增加财富
+        addBtn.addEventListener('click',function(){
+            //生成姓名
+            const firstName = firstNameArr[Math.floor(Math.random()*firstNameArr.length)]
+            const lastName = lastNameArr[Math.floor(Math.random()*lastNameArr.length)]
+
+            //生成随机财富
+            const money = Math.floor(Math.random()*1000000)
+
+            //添加到数组
+            arr.push([firstName+lastName,money])
+            console.log(arr);
+
+            //调用渲染视图的方法
+            render(arr)
+        })
+
+        //加倍财富方法
+        doubleBtn.addEventListener('click',function(){
+            //map方法
+            arr = arr.map(function(item){
+                return [item[0],item[1]*2]
+            })
+
+            //将数组中的数据渲染到dom中
+            render(arr)
+        })
+
+        //富豪排行
+        sortBtn.addEventListener('click',function(){
+            //sort方法
+            arr = arr.sort(function(a,b){
+                return a[1] - b[1]
+            })
+
+            //将数组中的数据渲染到dom中
+            render(arr)
+        })
+
+        //过滤富翁
+        showBtn.addEventListener('click',function(){
+            //filter方法
+            arr = arr.filter(function(item){
+                return item[1] > 1000000
+            })
+
+            //将数组中的数据渲染到dom中
+            render(arr)
+        })
+
+        //计算总数
+        allBtn.addEventListener('click',function(){
+            //reduce方法
+            const sum = arr.reduce(function(toatal,item){
+                return toatal += item[1]
+            },0)
+
+            //创建dom添加到main中
+            const div = document.createElement('div')
+            div.innerHTML = `<h3>共计:<strong>${sum}</strong></h3>`
+            main.appendChild(div)
+        })
+
+        //定义一个渲染视图的函数(刷新视图)
+        function render(arr){
+            //添加之前做一个清空
+            main.innerHTML = '<h2><strong>姓名</strong>身价</h2>'
+
+            /* <div class="person"><strong>张三</strong>300000</div> */
+            arr.forEach(function(item){
+                const div = document.createElement('div')
+                div.innerHTML = `<strong>${item[0]}</strong>${item[1]}`
+                div.className = 'person'
+                main.appendChild(div)
+            })
+        }
+
+
+
+        
+
+    </script>
+</body>
+
+</html>

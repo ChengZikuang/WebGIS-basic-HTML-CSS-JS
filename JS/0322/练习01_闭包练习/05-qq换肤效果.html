@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            background: url(img/1.jpg) no-repeat center top;
+        }
+        
+        li {
+            list-style: none;
+        }
+        
+        .baidu {
+            overflow: hidden;
+            margin: 100px auto;
+            background-color: #fff;
+            width: 410px;
+            padding-top: 3px;
+        }
+        
+        .baidu li {
+            float: left;
+            margin: 0 1px;
+            cursor: pointer;
+        }
+        
+        .baidu img {
+            width: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <ul class="baidu">
+        <li><img src="img/1.jpg"></li>
+        <li><img src="img/2.jpg"></li>
+        <li><img src="img/3.jpg"></li>
+        <li><img src="img/4.jpg"></li>
+    </ul>
+    <script>
+        //获取所有的img图片对象
+        var imgs = document.querySelectorAll('li img')
+
+        /* 方式一:使用this */
+        //遍历imgs
+        /* for(var i=0;i<imgs.length;i++){
+            //添加点击事件
+            imgs[i].onclick = function(){
+                //console.log(imgs[i]) //循环赋值之后,i最终变成了4,imgs[4]这个元素不存在
+                //console.log(imgs[i].src)// Cannot read properties of undefined  表明当前的元素是undefined
+
+                //可以使用this来解决(this:谁调用我,我代表谁.this就代表点击的那个图片)
+                console.log(this.src)
+
+                //设置body的背景为点击的图片
+                document.querySelector('body').style.background = `url(${this.src})`
+            }
+        } */
+
+        /* 方式二:使用forEach.避免出现i */
+        imgs.forEach(function(item){
+            item.onclick = function(){
+                document.querySelector('body').style.background = `url(${item.src})`
+            }
+        })
+    </script>
+</body>
+
+</html>

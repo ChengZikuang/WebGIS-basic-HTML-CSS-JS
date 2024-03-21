@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div.cont{
+            height: 960px;
+            background: url("img/image1.jpg");
+        }
+        div#scribe{
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="cont">
+        <div id="scribe">描述文字0</span>
+    </div>
+
+    <script>
+        //setIntervel,每1秒后切换img.src及文字内容替换
+        var v = 0;
+        var id = setInterval(() => {
+            let cont = document.querySelector("div.cont");
+            let text = document.querySelector("div#scribe");
+            switch (v%3) {
+                case 0:
+                    text.innerHTML = `描述文字${v%3}`;
+                    cont.style.background = `url("img/image${v%3+1}.jpg")`;
+                    break;
+                case 1:
+                    text.innerHTML = `描述文字${v%3}`;
+                    cont.style.background = `url("img/image${v%3+1}.jpg")`;
+                    break;
+                case 2:
+                    text.innerHTML = `描述文字${v%3}`;
+                    cont.style.background = `url("img/image${v%3+1}.jpg")`;
+                    break;
+            }
+            v++;
+        }, 1000);
+    </script>
+</body>
+</html>

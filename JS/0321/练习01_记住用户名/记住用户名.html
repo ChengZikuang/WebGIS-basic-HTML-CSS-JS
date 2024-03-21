@@ -8,13 +8,33 @@
 
     </style>
 </head>
-<body>
-    用户名：<input type="text" id="usernam">
+<body onload="flash()">
+    用户名：<input type="text" id="username">
     <input type="checkbox" name="" id="checkbox">记住用户名
 
     <script>
+        var ck = document.querySelector("#checkbox");
         //点击checkbox，便将text的值存入localStorage中
+        ck.addEventListener("change",function () {
+            var username = document.querySelector("#username");
+            if (ck.checked) {
+                localStorage.setItem("username", username.value);
+                console.log(localStorage);
+            }else{
+                localStorage.clear();
+            }
+        })
         //刷新界面或再次打开界面展示储存的用户名和checkbox选中样式
+
+        function flash() {
+            username.value = localStorage.getItem("username");
+            if(localStorage.getItem("username")){
+                ck.defaultChecked = true;
+            }
+
+        }
+
+
     </script>
 </body>
 </html>

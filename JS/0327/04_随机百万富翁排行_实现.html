@@ -124,10 +124,11 @@
 
             //添加到数组
             arr.push([firstName+lastName,money])
-            console.log(arr);
+            
 
             //调用渲染视图的方法
             render(arr)
+            console.log(arr);
         })
 
         //加倍财富方法
@@ -139,6 +140,7 @@
 
             //将数组中的数据渲染到dom中
             render(arr)
+            console.log(arr);
         })
 
         //富豪排行
@@ -148,8 +150,11 @@
                 return a[1] - b[1]
             })
 
+            console.log(arr);
+
             //将数组中的数据渲染到dom中
             render(arr)
+            console.log(arr);
         })
 
         //过滤富翁
@@ -161,6 +166,7 @@
 
             //将数组中的数据渲染到dom中
             render(arr)
+            console.log(arr);
         })
 
         //计算总数
@@ -174,6 +180,7 @@
             const div = document.createElement('div')
             div.innerHTML = `<h3>共计:<strong>${sum}</strong></h3>`
             main.appendChild(div)
+            console.log(arr);
         })
 
         //定义一个渲染视图的函数(刷新视图)

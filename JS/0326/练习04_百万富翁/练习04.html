@@ -92,13 +92,123 @@
             <button id="calculate-wealth">计算全部财富</button>
         </aside>
         <main id="main">
-            <h2><strong>姓名</strong>身价</h2>
-            <!-- <div class="person"><strong>张三</strong>300000</div> -->
+            <h2><strong>姓名</strong>身价</h2><!-- <div class="person"><strong>张三</strong>300000</div> -->
         </main>
     </div>
     <script>
-        
+        var btn = document.querySelectorAll("button");
+        var main = document.querySelector("main");
+        // var person = document.querySelectorAll(".person");
+
+
+        //增加
+        btn[0].addEventListener('click', newLise);
+
+        function newLise() {
+            function randomCoding() {
+                //创建26个字母数组var
+                var arr = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
+                var idvalue = '';
+                var n = 4;//这个值可以改变的，对应的生成多少个字母，根据自己需求所改
+                for (var i = 0; i < n; i++) {
+                    idvalue += arr[Math.floor(Math.random() * 26)];
+                }
+                return idvalue;
+            }
+            function getRandomIntInclusive(min, max) {
+                const minCeiled = Math.ceil(min);
+                const maxFloored = Math.floor(max);
+                return Math.floor(Math.random() * (maxFloored - minCeiled + 1) + minCeiled); // 包含最小值和最大值
+            }
+            let name = randomCoding();
+            let value = getRandomIntInclusive(100000, 1000000);
+            main.appendChild(creatediv("div", name, value,"person"));
+        }
+        //double
+        btn[1].addEventListener('click', doubleValue);
+        function doubleValue() {
+            let person = nowpersons();
+            person.forEach(element => {
+                element.childNodes[1].innerHTML *= 2;
+            });
+        }
+        //rank
+        btn[2].addEventListener('click', rank);
+        function rank() {
+            const person = nowpersons();
+            var value = [];
+            person.forEach(element => {
+                value.push([element.firstChild.innerHTML, element.lastChild.innerHTML])
+            });
+            console.log(value);
+            //根据value值给div排序？？？  
+            value.sort(function (a, b) { return a[1] - b[1] });
+            console.log(value);
+
+            //循环更新person的值
+            console.log(person);
+            person.forEach((element,index) => {
+                element.firstChild.innerHTML = value[index][0];
+                element.lastChild.innerHTML = value[index][1];
+            });
+
+        }
+        //select
+        btn[3].addEventListener('click', select)
+        function select() {
+            let person = nowpersons();
+            person.forEach(element => {
+                let value = element.lastChild.innerHTML;
+                if (value < 1000000) {
+                    main.removeChild(element);
+                }
+            });
+        }
+        //sum
+        btn[4].addEventListener('click', sum);
+        function sum() {
+            let sumvalue = 0;
+            let person = null;
+            person = nowpersons();
+            person.forEach(element => {
+                sumvalue += Number(element.lastChild.innerHTML);
+            });
+            main.appendChild(creatediv("h3", "总计", sumvalue,""));
+        }
+
+        //创建main下childNode
+        function creatediv(type, name, value,classname) {
+            let newdiv = document.createElement(type);
+            let newstro = document.createElement("strong");
+            newstro.innerHTML = name;
+            newdiv.append(newstro);
+            let newtext = document.createElement("text");
+            newtext.innerHTML = value;
+            newdiv.appendChild(newtext);
+            newdiv.className = classname;
+            return newdiv;
+        }
+
+        function nowpersons() {
+            return document.querySelectorAll(".person");
+        }
+
+
     </script>
+
+    <hr>
+    <h3>总结</h3>
+    <ol>
+        <li>做界面布局仍是弱项，没有训练思路。</li>
+        <li>value.sort(function (a, b) { return a[1] - b[1] });</li>
+        <li><strong>差个sum唯一</strong></li>
+    </ol>
+    <h3>疑问</h3>
+    <ol>
+        <li>如何给父节点的所有子节点的某一项值进行排序？然后显示排序后的形式？？？</li>
+        <li>将数据存储在数组可以保证之前数据不被销毁，但是每次重新渲染视图，会造成时间和资源增加？</li>
+        <li>参考答案中，在排序渲染后，再点击加倍，未渲染的仍会加倍?nowpersons()？</li>
+    </ol>
 </body>
 
 </html>

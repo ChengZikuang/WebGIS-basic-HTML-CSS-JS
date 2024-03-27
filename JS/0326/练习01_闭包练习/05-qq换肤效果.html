@@ -53,9 +53,10 @@
 
         /* 方式一:使用this */
         //遍历imgs
-        /* for(var i=0;i<imgs.length;i++){
+        for(var i=0;i<imgs.length;i++){
             //添加点击事件
-            imgs[i].onclick = function(){
+            (function(){
+                imgs[i].onclick = function(){
                 //console.log(imgs[i]) //循环赋值之后,i最终变成了4,imgs[4]这个元素不存在
                 //console.log(imgs[i].src)// Cannot read properties of undefined  表明当前的元素是undefined
 
@@ -64,15 +65,17 @@
 
                 //设置body的背景为点击的图片
                 document.querySelector('body').style.background = `url(${this.src})`
-            }
-        } */
+                }
+            })()
+            
+        }
 
         /* 方式二:使用forEach.避免出现i */
-        imgs.forEach(function(item){
-            item.onclick = function(){
-                document.querySelector('body').style.background = `url(${item.src})`
-            }
-        })
+        // imgs.forEach(function(item){
+        //     item.onclick = function(){
+        //         document.querySelector('body').style.background = `url(${item.src})`
+        //     }
+        // })
     </script>
 </body>
 

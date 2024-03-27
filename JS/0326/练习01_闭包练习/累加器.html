@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>document</title>
+</head>
+<body>
+    练习二:实现一个累加器,每过1秒钟自增一次(并在控制台上打印1秒,2秒,3秒...),到达10秒钟后停止累加,并打印计时器结束
+
+    <p class="res"></p>
+
+    <script>
+        var count = 0;
+        let time = 0;
+        let id = setInterval(function () {
+            console.log(time + 's');
+            time +=1;
+            count += count;
+            if (time > 10) {
+                clearInterval(id);
+                document.querySelector("p").innerHTML = "计时器结束";
+            }
+        },1000)
+
+
+    </script>
+</body>
+</html>

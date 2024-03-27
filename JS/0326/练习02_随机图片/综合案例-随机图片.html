@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>随机图片</title>
+</head>
+
+<body>
+    <!-- 小图 -->
+    <div style="background-color:red;border: dotted; height: 50px; width: 50px">
+        <img src="img/04.jpg" id="small" style="width: 50px; height: 50px;">
+    </div>
+    <!-- 大图 -->
+    <div style="border: double ;width: 400px; height: 400px; position: absolute; left: 500px; top:10px">
+        <img src="" id="big" style="width: 400px; height: 400px;">
+    </div>
+
+    <!-- 开始和结束按钮 -->
+    <input id="startBtn" type="button" style="width: 150px;height: 150px; font-size: 20px" value="开始">
+    <input id="stopBtn" type="button" style="width: 150px;height: 150px; font-size: 20px" value="停止">
+</body>
+
+<script>
+    var rand = 4;
+    var Id = null;
+    //点击开始按钮,左边小图随机切换
+    document.querySelector("#startBtn").addEventListener("click", function () {
+        Id = setInterval(function () {
+            rand = Math.floor(Math.random() * (9) + 1);
+            document.querySelector("#small").src = `img/0${rand}.jpg`;
+        }, 100);
+    });
+    //点击结束按钮,选中大图放在右边展示
+    document.querySelector("#stopBtn").addEventListener('click', function () {
+        clearInterval(Id);
+        document.querySelector("#big").src = `img/0${rand}.jpg`;
+    })
+</script>
+
+</html>

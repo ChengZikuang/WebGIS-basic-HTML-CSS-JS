@@ -21,8 +21,25 @@
     <p id="p01"></p>
 
     <script>
-        function myFunction() {
-            
+        function myFunction(){
+        var input = document.querySelector('input');
+        var p = document.querySelector('#p01')
+
+            //获取文本框的值
+        var value = input.value
+
+        
+            try {
+                if(value == '') throw '空的'
+                if(value > 10) throw '太大'
+                if(value <  5) throw '太小'
+                if(value >= 5 && value <= 10) throw '正确'            
+            } 
+            catch (error) {
+                p.innerHTML = `输入的值:${error}`
+            }finally{
+                input.value = '';
+            }
             
         }
     </script>

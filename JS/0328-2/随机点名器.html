@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .ctn>div {
+            width: 150px;
+            padding: 10px;
+            text-align: center;
+            border: 1px solid #000;
+
+
+        }
+
+        .red {
+            background-color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- flex内容区 -->
+    <div class="ctn" style="display: flex; flex-wrap: wrap;justify-content: space-between;">
+        <div>十大</div>
+        <div>是的</div>
+        <div>线路</div>
+        <div>使得</div>
+        <div>光盘</div>
+        <div>范德</div>
+        <div>放弃</div>
+        <div>矢量</div>
+        <div>了反</div>
+        <div>山东</div>
+        <div>把泡</div>
+        <div>风扇</div>
+    </div>
+    <!-- 按钮 -->
+    <button style="position: absolute;left: 50%;bottom: 0%;">点名</button>
+
+    <script>
+        var names = document.querySelectorAll(".ctn>div");
+        
+        var btn = document.querySelector("button");
+        var isflag = true;
+        var timer = null;
+        //点击点名按钮
+        btn.addEventListener("click", () => {
+            //判断内容值为点名
+            //1.setInterval
+            if (isflag) {
+                set();
+                isflag = false;
+                //2.将btn内容修改为“停止”
+                btn.innerText = "停止";
+            } else {
+                //判断内容值为停止
+                //1.关闭计时器
+                //2.将btn内容修改为“点名”
+                clearInterval(timer);
+                isflag = true;
+                btn.innerText = "开始";
+            }
+        })
+        function set() {
+            timer = setInterval(() => {
+                //2.1.生成内容数组内随机数
+                //2.2.将选择到的元素的bgc修改为红色 （排他）
+                let rand = Math.floor(Math.random()*names.length);
+                console.log(rand);
+                names.forEach(element => {
+                    element.classList.remove("red");
+                });
+                names[rand].classList.add("red");
+            }, 100);
+        }
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .loginbtn{
+            position: absolute;
+            z-index: -1;
+            width: 100px;
+            left: 50%;
+            margin: 0 0 0 -50px;
+            padding: 10px;
+        }
+        .loginwindow{
+            position: absolute;
+            height: 200px;
+            width: 500px;
+            border: 1px solid gray;
+            text-align: center;
+            left: 50%;
+            top: 50%;
+            margin: -100px 0 0 -250px;
+            background-color: white;
+        }
+    </style>
+</head>
+<body>
+    <!-- login按钮 -->
+    <button type="button" class="loginbtn">login</button>
+
+    <!-- 登录框，正常状态下不显示 -->
+    <div class="loginwindow" style="display: none;" >
+        <!-- 登录标题 -->
+        <h2 class="logintitle" draggable="true">login</h2>
+        <!-- 登录内容 -->
+        <input type="text"><br>
+        <input type="password">
+    </div>
+
+    <script>
+        var loginwindow = document.querySelector(".loginwindow");
+        //点击login按钮，显示登录框
+        document.querySelector(".loginbtn").addEventListener("click",() => {
+            loginwindow.style.display = "block";            
+        })
+        //鼠标放置与登录框名称上，监听按下，改变登录框位置，与鼠标位移一致
+        var logintitle = document.querySelector(".logintitle");
+        logintitle.addEventListener("drag",(e) => {
+            loginwindow.style.left = e.clientX + "px";
+            loginwindow.style.top = e.clientY + "px";
+            
+        })
+        logintitle.addEventListener("dragend",(e) => {
+            loginwindow.style.left = e.clientX + "px";
+            loginwindow.style.top = e.clientY + "px";
+        })
+
+
+    </script>
+</body>
+</html>

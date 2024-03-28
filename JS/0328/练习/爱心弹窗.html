@@ -10,17 +10,17 @@
         }
         .window{
             position: absolute;
+            display: none;
         }
     </style>
 </head>
 <body>
     <h3></h3>
     <button id="like">喜欢</button><button id="unlike">不喜欢</button>
-    <div class="window" style="display: none;">new window</div>
+    <div class="window">new window</div>
     <script>
-        var window = document.querySelector(".window");
         document.querySelector("#unlike").addEventListener("click",function () {
-            window.style.display = "block";
+            document.querySelector(".window").style.display = "block";
         })
     </script>
 </body>

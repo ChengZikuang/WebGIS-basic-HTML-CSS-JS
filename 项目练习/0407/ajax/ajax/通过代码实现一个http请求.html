@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //浏览器中有一个构造函数 XMLHttpRequest
+      //生成一个XHR的实例
+      let data;
+      const xhr = new XMLHttpRequest();
+      //如何利用xhr实例来发送请求呢？接口地址 请求方法
+      // 说明利用哪个请求方法向哪个接口地址发送请求
+      xhr.open("GET", "http://project.x-zd.net:3001/apis/herolist");
+      //正式发送请求
+      xhr.send();
+      //通过xhr的一个事件监听来获取请求的响应状态和数据
+      xhr.onreadystatechange = function () {
+        //从请求到响应需要经历一个过程 这个过程中可以通过一个状态表示过程的进行
+        //readyState这个状态会从0逐渐变化到4 如果变到了4说明请求响应成功了
+        if (xhr.readyState === 4) {
+          console.log("request success");
+          //如何拿到数据呢?
+          data = JSON.parse(xhr.response);
+          console.log(data, "data");
+        }
+      };
+      console.log('同步代码')
+    </script>
+  </body>
+</html>

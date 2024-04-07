@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //只需要传入接口地址 然后获取响应结果
+      function getData(url) {
+        return new Promise(function (resolve) {
+          //处理异步代码的
+          const xhr = new XMLHttpRequest();
+          //如何利用xhr实例来发送请求呢？接口地址 请求方法
+          // 说明利用哪个请求方法向哪个接口地址发送请求
+          xhr.open("GET", url);
+          //正式发送请求
+          xhr.send();
+          //通过xhr的一个事件监听来获取请求的响应状态和数据
+          xhr.onreadystatechange = function () {
+            //从请求到响应需要经历一个过程 这个过程中可以通过一个状态表示过程的进行
+            //readyState这个状态会从0逐渐变化到4 如果变到了4说明请求响应成功了
+            if (xhr.readyState === 4) {
+              // console.log("request success");
+              // //如何拿到数据呢?
+              // data = JSON.parse(xhr.response);
+              // console.log(data, "data");
+              //说明请求数据成功了 可以将当前的Promise修改为成功态 并且存储数据
+              resolve(xhr.response);
+            }
+          };
+        });
+      }
+      getData("https://api.vvhan.com/api/love").then((res) => {
+        console.log(res, "res");
+        document.body.innerHTML = res;
+      });
+      getData("http://project.x-zd.net:3001/apis/herolist").then((res) => [
+        console.log(JSON.parse(res), "res2"),
+      ]);
+    </script>
+  </body>
+</html>

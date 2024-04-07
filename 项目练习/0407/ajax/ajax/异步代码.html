@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //js这门编程语言是单线程的，js代码多大多数情况下是从上至下顺次执行
+      //某个地方有一个非常消耗时间(定时器,请求发送）的操作，那显然这种机制是不合理 所以js这门语言采用异步 来解决这个问题
+      //同步代码先执行 异步代码等到同步代码执行完毕后再执行
+      setTimeout(function () {
+        console.log("10s");
+        console.log("1s");
+        setTimeout(() => {
+          console.log("2s");
+        }, 1000);
+      }, 1000);
+    </script>
+  </body>
+</html>

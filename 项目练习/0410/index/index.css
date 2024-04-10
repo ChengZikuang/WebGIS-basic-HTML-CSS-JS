@@ -3,18 +3,58 @@
     text-decoration: none;
     /* background-color: rgb(236, 237, 242); */
 }
-
+.ctn{
+    margin: auto;
+    width: 50vw;
+}
 .select{
-    width: 100vw;
     height: 100px;
     background-color: rgb(236, 237, 242);
     display: flex;
-    justify-content: space-between;
-    border-radius: 10px 10px 10px 10px;
+    flex:0 0 content ;
+    border-radius: 10px;
 }
-.select div{
-    margin-top: 10px;
+.select .left{
+    flex: 0.5 1 auto;
+    display: flex;
+    flex-direction: column;
 }
-.search{
-    
+.select .left div{
+    text-align: center;
+    display: inline-block;
+    line-height: 50px;
+}
+.select .middle{
+    flex: 2 1 auto;
+    display: flex;
+    flex-direction: column;
+}
+.select .middle .option div{
+    display: inline-block;
+    line-height: 50px;
+}
+.select .search{
+    flex: 1 1 auto;
+}
+div.left{
+    align-content: center;
+}
+div.middle{
+    align-content: center;
+}
+div.search{
+    align-content: end;
+    margin-bottom: 15px;
+}
+input{
+    border: none;
+    height: 25px;
+}
+
+.grid{
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    justify-items: center;
+    text-align: center;
+    /* row-gap: 20px; */
 }

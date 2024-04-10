@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <script src="./index/getJSON.js"></script>
+</head>
+
+<body>
+  <img src="" alt="">
+  <script>
+    // //1.httprequset
+    // const XHR = new XMLHttpRequest();
+    // //2.open
+    // XHR.open("GET","http://project.x-zd.net:3001/apis/herolist");
+    // //3.send
+    // XHR.send();
+    // //4.changestatus
+    // XHR.onreadystatechange = function () {
+    //     if (XHR.readyState === 4) {
+    //         const res = JSON.parse(XHR.response);
+    //         console.log(res.data[0]);
+    //     }
+    // }
+
+    // function getHttp(url) {
+    //   return new Promise((resolve, reject) => {
+    //     const XHR = new XMLHttpRequest();
+    //     XHR.open("GET", url);
+    //     XHR.send();
+    //     XHR.onreadystatechange = function () {
+    //       if (XHR.readyState === 4) {
+    //         console.log(1);
+    //         resolve(JSON.parse(XHR.response));
+    //       }
+    //     };
+    //   });
+    // }
+
+    // (async () => {
+    //   const res = await getHttp("http://project.x-zd.net:3001/apis/herolist");
+    //   console.log(2);
+    //   console.log(res.data[1]);
+    // })();
+
+    (async ()=>{
+      const res = await getJSON("https://api.vvhan.com/api/bing?type=json");
+      console.log(res);
+      document.querySelector("img").src = res.data.url ;
+    })();
+  </script>
+</body>
+
+</html>

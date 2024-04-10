@@ -1,0 +1,20 @@
+*{
+    box-sizing: border-box;
+    text-decoration: none;
+    /* background-color: rgb(236, 237, 242); */
+}
+
+.select{
+    width: 100vw;
+    height: 100px;
+    background-color: rgb(236, 237, 242);
+    display: flex;
+    justify-content: space-between;
+    border-radius: 10px 10px 10px 10px;
+}
+.select div{
+    margin-top: 10px;
+}
+.search{
+    
+}

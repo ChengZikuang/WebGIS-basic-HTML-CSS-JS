@@ -1,5 +1,7 @@
 http://web-2-doc.x-zd.net/
+
 http://project.x-zd.net/heropick/
+http://project.x-zd.net:3001/apis/herolist
 王者荣耀英雄选择案例:
 1.封装一个ajax请求方法来获取接口的数据
 2.分析一下数据的结构 然后将数据结构转化为视图结构 对视图部分进行样式和布局

@@ -11,8 +11,11 @@
     <script>
         //1.XMLRequset
         const XHR = new XMLHttpRequest();
+        //2.open
         XHR.open("GET", "http://project.x-zd.net:3001/apis/herolist");
+        //3.send
         XHR.send();
+        //监听获取数据XHR.response
         XHR.onreadystatechange = () => {
             //==3 或 ==4 时，response中才有正确的JSON数据？
             if (XHR.readyState == 4) {

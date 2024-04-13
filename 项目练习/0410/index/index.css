@@ -45,51 +45,17 @@ body {
     column-gap: 30px;
     position: relative;
 }
-.bar .option .option_row .opt{
-    
-}
-.bar .option .option_row .opt::before{
-    content: "";
-    display: inline-block;
-    position: relative;
-    width: 15px;
-    height: 15px;
-    top: 3px;
-    left: -5px;
-    border: 1px solid #ccc;
-    border-radius: 50%;
-}
 
-.bar .option .option_row .opt::after{
-    content: "";
-    display: inline-block;
-    position: relative;
-    width: 15px;
-    height: 15px;
-    top: 2px;
-    left: -49px;
-    background-color: #2C88E2;
-    border-radius: 50%;
-}
-
-:checked{
-    
-}
-
-.bar .search .searchbar{
+.bar .search .searchctn{
     border: 1px solid rgb(210, 210, 210);
     margin-top: 40px;
     margin-right: 50px;
 }
-.bar .search .searchbar input{
+.bar .search .searchctn input{
     border: none;
     background: none;
+    height: 50px;
 }
-
-
-
-
-
 
 /* grid */
 .grid {

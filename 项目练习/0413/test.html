@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .ctn{
+            border: 1px solid red;
+            min-height: 300px;
+            width: min-content;
+            display: grid;
+            grid-auto-flow: column;
+            grid-template-rows: repeat(auto-fit,50px);
+            row-gap: 6px;
+            column-gap: 20px;
+        }
+        li{
+            align-content: center ;
+            border: 1px solid #000;
+            list-style: none;
+            background-color: blue;
+            width: 50px;
+            height: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div class="ctn">
+        <li>nj1</li>
+        <li>nj2</li>
+        <li>nj3</li>
+        <li>nj4</li>
+        <li>nj5</li>
+        <li>nj6</li>
+        <li>nj7</li>
+        <li>nj8</li>
+        <li>nj1</li>
+        <li>nj2</li>
+        <li>nj3</li>
+        <li>nj4</li>
+        <li>nj5</li>
+        <li>nj6</li>
+        <li>nj7</li>
+        <li>nj8</li>
+        <li>nj9</li>
+        <li>nj0</li>
+    </div>
+</body>
+</html>
